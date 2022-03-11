@@ -58,9 +58,9 @@
       
         <tags>
             
-            <tag> c </tag>
-            
             <tag> linux </tag>
+            
+            <tag> c </tag>
             
         </tags>
       
@@ -104,9 +104,9 @@
       
         <tags>
             
-            <tag> coredumped </tag>
-            
             <tag> c </tag>
+            
+            <tag> coredumped </tag>
             
             <tag> assembly </tag>
             
