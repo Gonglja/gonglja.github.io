@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> os </tag>
-            
             <tag> assembly </tag>
+            
+            <tag> os </tag>
             
         </tags>
       
@@ -85,9 +85,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> c </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -131,11 +131,11 @@
       
         <tags>
             
+            <tag> coredumped </tag>
+            
             <tag> c </tag>
             
             <tag> assembly </tag>
-            
-            <tag> coredumped </tag>
             
         </tags>
       
