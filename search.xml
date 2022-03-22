@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>GS87D键盘说明书</title>
+      <link href="/posts/74f0a0fa/"/>
+      <url>/posts/74f0a0fa/</url>
+      
+        <content type="html"><![CDATA[<img src="https://" alt="" style="width:100%"> <p>有一个不太好的习惯，有时候喜欢收集说明书，每次都是攒一堆，然后越来越多的时候，直接一下丢了。</p><p>本文的主人公也是，在买来后就被丢到了角落。</p><p>最近需要使用在双电脑间切换键盘，依稀记得键盘支持最高三个蓝牙设备连接，凭着记忆怎么也没弄好，无奈百度一下，找到了一个教程，其中作者说明书也是找不着了，然后整理了一个博客。但按照上面的方法还是没有设置成功。遂又去找客服，不得不说，还是官方教程好使。记录下</p><h3 id="蓝牙连接"><a href="#蓝牙连接" class="headerlink" title="蓝牙连接"></a>蓝牙连接</h3><p>1、开关拨OFF，装电池，拨到ON，指示灯会闪烁一下<br>2、然后<strong>FN按住</strong>，再<strong>按一下Q</strong>，接着空格右边<strong>FN按住</strong>，<strong>再按住P，长按</strong>，<strong>第1个设备打开蓝牙搜索</strong>，连接。就可以正常输入，能打字了<br>3、<strong>FN按住</strong>，再<strong>按一下W</strong>，切换到第二个设备键盘无反应状态，接着空格右边<strong>FN按住</strong>，<strong>再按住P，长按</strong>，<strong>第2个设备打开蓝牙搜索</strong>，连接<br>4、都好了之后，<strong>FN按住</strong>，再<strong>按一下Q或者W</strong>可以切换设备</p><p>QWERT一共5个设备切换，先切换，再对码，操作</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.jianshu.com/p/ce4fd3f3e598">https://www.jianshu.com/p/ce4fd3f3e598</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 说明书 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于实模式与保护模式</title>
       <link href="/posts/4bb7b00b/"/>
       <url>/posts/4bb7b00b/</url>
