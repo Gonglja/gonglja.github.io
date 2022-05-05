@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>设备树 | Gong's Blog</title><meta name="author" content="lj gong"><meta name="copyright" content="lj gong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="设备树语法设备树示例： 节点格式label: node-name@unit-address  lable: 标号（可省略，其作用方便引用node，类似汇编中的label）  node-name: 节点名字  unit-address: 单元地址   属性格式name&#x3D;value value有多种取值方式。  一个32位的数据，用尖括号包围起来，如   1interrupts &#x3D; &lt;17&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设备树">
+<meta property="og:url" content="http://gonglja.github.io/posts/9faa78d2/index.html">
+<meta property="og:site_name" content="Gong&#39;s Blog">
+<meta property="og:description" content="设备树语法设备树示例： 节点格式label: node-name@unit-address  lable: 标号（可省略，其作用方便引用node，类似汇编中的label）  node-name: 节点名字  unit-address: 单元地址   属性格式name&#x3D;value value有多种取值方式。  一个32位的数据，用尖括号包围起来，如   1interrupts &#x3D; &lt;17&amp;gt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png">
+<meta property="article:published_time" content="2022-04-29T00:57:30.000Z">
+<meta property="article:modified_time" content="2022-05-05T06:22:23.844Z">
+<meta property="article:author" content="lj gong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gonglja.github.io/posts/9faa78d2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '设备树',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2022-05-05 14:22:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Gong's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">设备树</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-29T00:57:30.000Z" title="发表于 2022-04-29 08:57:30">2022-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-05T06:22:23.844Z" title="更新于 2022-05-05 14:22:23">2022-05-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">716</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="设备树"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="设备树语法"><a href="#设备树语法" class="headerlink" title="设备树语法"></a>设备树语法</h3><p>设备树示例：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://121.4.40.116:20001/i/2022/05/202204290903331.png"></p>
+<h4 id="节点格式"><a href="#节点格式" class="headerlink" title="节点格式"></a>节点格式</h4><p><code>label: node-name@unit-address</code></p>
+<ul>
+<li><p>lable: 标号（可省略，其作用方便引用node，类似汇编中的label）</p>
+</li>
+<li><p>node-name: 节点名字</p>
+</li>
+<li><p>unit-address: 单元地址</p>
+</li>
+</ul>
+<h4 id="属性格式"><a href="#属性格式" class="headerlink" title="属性格式"></a>属性格式</h4><p><code>name=value</code></p>
+<p>value有多种取值方式。</p>
+<ul>
+<li><p>一个32位的数据，用尖括号包围起来，如</p>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interrupts = &lt;<span class="number">17</span>&gt;</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>一个64位数据（使用2个32位数据表示），用尖括号围起来，如：</p>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clock-frequency = &lt;<span class="number">0x00000001</span> <span class="number">0x00000000</span>&gt;</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>一个有结束字符的字符串”disabled”，如</p>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">status = <span class="string">"disabled"</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+<li><p>字节序列，用中括号包起来</p>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local-man-address = [<span class="number">1</span>a <span class="number">2b</span> <span class="number">3</span>c <span class="number">4</span>d <span class="number">5</span>e <span class="number">6f</span>] <span class="comment">//每个byte使用2个16进制数来表示</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+<li><p>也可以是各种值的组合，用<code>，</code>隔开</p>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compatible = <span class="string">"samsung,smart210"</span>, <span class="string">"samsung,s5pv210"</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h4 id="一些标准属性"><a href="#一些标准属性" class="headerlink" title="一些标准属性"></a>一些标准属性</h4><h5 id="compatiable-属性"><a href="#compatiable-属性" class="headerlink" title="compatiable 属性"></a>compatiable 属性</h5><p>其本意为“兼容”，对于某个LED，内核中有三个驱动A、B、C支持它。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">led {</span><br><span class="line">    compiable = <span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>;</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<p>内核启动时，就会为这个LED按照A-B-C顺序为它寻找驱动程序。</p>
+<h5 id="model-属性"><a href="#model-属性" class="headerlink" title="model 属性"></a>model 属性</h5><p>model属性与<code>compatiable</code> 有些相似，但又不同。</p>
+<p>compilable是一个字符串序列，表示兼容什么，model指明这个硬件具体是什么。比如：</p>
+<p>单板兼容samsung的smart210和s5pv210，这个板子是基于s5pv210的smart210</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = <span class="string">"SMART210 based on S5PV210"</span>;</span><br><span class="line">compatible = <span class="string">"samsung,smart210"</span>, <span class="string">"samsung,s5pv210"</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="status-属性"><a href="#status-属性" class="headerlink" title="status 属性"></a>status 属性</h5><p>status 属性是和设备状态有关的，属性值也是字符串，字符串是设备的状态信息</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://121.4.40.116:20001/i/2022/05/202204291020891.png"></p>
+<h5 id="address-cells-和-size-cells属性"><a href="#address-cells-和-size-cells属性" class="headerlink" title="#address-cells 和 #size-cells属性"></a>#address-cells 和 #size-cells属性</h5><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">address-cells: address要用多少个<span class="number">32</span>位数来表示</span><br><span class="line">size-cells: size要用多少个<span class="number">32</span>位数来表示</span><br></pre></td></tr></tbody></table></figure>
+
+<p>比如一段内存，怎么描述它的起始地址和大小？</p>
+<p>以下示例中，<code>address-cells</code>为1，表示用1个32位数表示地址，即用<code>0x80000000</code>表示起始地址</p>
+<p><code>size-cells</code>为1，表示用1个32位数表示大小，即用<code>0x20000000</code>表示大小</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/ {   </span><br><span class="line">    <span class="meta"># address-cells = <span class="meta-string">&lt;1&gt;</span>;   </span></span><br><span class="line">    <span class="meta"># size-cells = <span class="meta-string">&lt;1&gt;</span>;   </span></span><br><span class="line">    memory {   </span><br><span class="line">        reg = &lt;<span class="number">0x20000000</span> <span class="number">0x20000000</span>&gt;;   </span><br><span class="line">    };   </span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="reg-属性"><a href="#reg-属性" class="headerlink" title="reg 属性"></a>reg 属性</h5><p>reg本意是register，用来表示寄存器地址。但在设备树中，用来描述一段空间。对于ARM系统，寄存器和内存是统一编址的，访问寄存器时用某块地址，访问内存时用某块地址，在访问方法上没有区别。</p>
+<p>reg属性的值，是一系列的”address size”，用多少个32位的数来表示address和size，是由#address-cells 和 #size-cells决定的。</p>
+<h5 id="name-属性"><a href="#name-属性" class="headerlink" title="name 属性"></a>name 属性</h5><p>过时了，建议不用。值是字符串，用来表示节点的名字。在跟platform_driver匹配时，优先级最低。compiable属性在匹配过程中，优先级最高。</p>
+<h4 id="常用的节点"><a href="#常用的节点" class="headerlink" title="常用的节点"></a>常用的节点</h4><h5 id="根节点"><a href="#根节点" class="headerlink" title="根节点"></a>根节点</h5><p>用/标识根节点，如：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ {    </span><br><span class="line">        model = <span class="string">"SMART210 based on S5PV210"</span>;    </span><br><span class="line">        compatible = <span class="string">"samsung,smart210"</span>, <span class="string">"samsung,s5pv210"</span>;    </span><br><span class="line"> 	...</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h5 id="CPU-节点"><a href="#CPU-节点" class="headerlink" title="CPU 节点"></a>CPU 节点</h5><p>一般不需要我们设置，在dtsi中都设置好了。</p>
+<h5 id="memmory-节点"><a href="#memmory-节点" class="headerlink" title="memmory 节点"></a>memmory 节点</h5><p>厂商不知道板子要用多大的内存，所以此处需要自行设定</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">memory {   </span><br><span class="line">      reg = &lt;0x20000000 0x20000000&gt;;   </span><br><span class="line">};  </span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/135280350">【Linux笔记】设备树基础知识</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lj gong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://gonglja.github.io/posts/9faa78d2/">http://gonglja.github.io/posts/9faa78d2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://gonglja.github.io" target="_blank">Gong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/4a17b156/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div><div class="next-post pull-right"><a href="/posts/d152f189/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://121.4.40.116:20001/i/2022/05/202204252009405.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">cpp使用chrono获取当前时间</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lj gong</div><div class="author-info__description">蓬生麻中，不扶而直，白沙在涅，与之俱黑。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gonglja"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/gonglja" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:glj0@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2022重新出发！加油加油</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E6%A0%91%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">设备树语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">节点格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">属性格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%A0%87%E5%87%86%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">一些标准属性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#compatiable-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.1.</span> <span class="toc-text">compatiable 属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#model-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text">model 属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#status-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.3.</span> <span class="toc-text">status 属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#address-cells-%E5%92%8C-size-cells%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.4.</span> <span class="toc-text">#address-cells 和 #size-cells属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#reg-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.5.</span> <span class="toc-text">reg 属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#name-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.6.</span> <span class="toc-text">name 属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">常用的节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B9%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">根节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CPU-%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">CPU 节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#memmory-%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.3.</span> <span class="toc-text">memmory 节点</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number"></span> <span class="toc-text">参考</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156/" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2022-05-05T06:17:51.110Z" title="发表于 2022-05-05 14:17:51">2022-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/9faa78d2/" title="设备树"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设备树"/></a><div class="content"><a class="title" href="/posts/9faa78d2/" title="设备树">设备树</a><time datetime="2022-04-29T00:57:30.000Z" title="发表于 2022-04-29 08:57:30">2022-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d152f189/" title="cpp使用chrono获取当前时间"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="http://121.4.40.116:20001/i/2022/05/202204252009405.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cpp使用chrono获取当前时间"/></a><div class="content"><a class="title" href="/posts/d152f189/" title="cpp使用chrono获取当前时间">cpp使用chrono获取当前时间</a><time datetime="2022-04-25T11:51:07.000Z" title="发表于 2022-04-25 19:51:07">2022-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6b3e9b20/" title="在ubuntu下更新自编译内核"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在ubuntu下更新自编译内核"/></a><div class="content"><a class="title" href="/posts/6b3e9b20/" title="在ubuntu下更新自编译内核">在ubuntu下更新自编译内核</a><time datetime="2022-04-24T07:52:00.000Z" title="发表于 2022-04-24 15:52:00">2022-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d05aad81/" title="人为什么会愤怒"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人为什么会愤怒"/></a><div class="content"><a class="title" href="/posts/d05aad81/" title="人为什么会愤怒">人为什么会愤怒</a><time datetime="2022-04-24T03:32:00.000Z" title="发表于 2022-04-24 11:32:00">2022-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By lj gong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'cf6d7d2674b768ef1bf7',
+      clientSecret: 'a8254412e77947a4ff26d08ce7af7b5853efbb44',
+      repo: 'gonglja.github.io',
+      owner: 'Gonglja',
+      admin: ['Gonglja'],
+      id: 'a0acd50ac97ea846b2461f420dca973f',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
