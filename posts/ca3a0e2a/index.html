@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>linux0.11环境搭建与阅读 | Gong's Blog</title><meta name="author" content="lj gong"><meta name="copyright" content="lj gong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux0.11环境搭建与阅读背景更好的学习 linux 内核思想，做一个有想法的人。 环境搭建在 windows 下使用虚拟机 vmware ，虚拟机使用 ubuntu 22.04 LTS，模拟器使用 qemu 。 搭建虚拟机vmware过程省略，具体的可查看 archlinux的搭建 搭建ubuntu中qemu 由于使用命令 sudo apt install qemu 安装版本过旧并可能存在">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>linux0.11环境搭建与阅读 | Gong's Blog</title><meta name="keywords" content="linux"><meta name="author" content="lj gong"><meta name="copyright" content="lj gong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux0.11环境搭建与阅读背景更好的学习 linux 内核思想，做一个有想法的人。 环境搭建在 windows 下使用虚拟机 vmware ，虚拟机使用 ubuntu 22.04 LTS，模拟器使用 qemu 。 搭建虚拟机vmware过程省略，具体的可查看 archlinux的搭建 搭建ubuntu中qemu 由于使用命令 sudo apt install qemu 安装版本过旧并可能存在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux0.11环境搭建与阅读">
 <meta property="og:url" content="http://gonglja.github.io/posts/ca3a0e2a/index.html">
@@ -7,8 +7,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png">
 <meta property="article:published_time" content="2022-05-11T01:08:09.000Z">
-<meta property="article:modified_time" content="2022-06-02T09:57:58.704Z">
+<meta property="article:modified_time" content="2022-06-08T03:16:48.319Z">
 <meta property="article:author" content="lj gong">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gonglja.github.io/posts/ca3a0e2a/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
@@ -52,7 +53,7 @@
   isHome: false,
   isHighlightShrink: undefined,
   isToc: true,
-  postUpdate: '2022-06-02 17:57:58'
+  postUpdate: '2022-06-08 11:16:48'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -143,7 +144,7 @@
     detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Gong's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">linux0.11环境搭建与阅读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-11T01:08:09.000Z" title="发表于 2022-05-11 09:08:09">2022-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-02T09:57:58.704Z" title="更新于 2022-06-02 17:57:58">2022-06-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="linux0.11环境搭建与阅读"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux0-11环境搭建与阅读"><a href="#Linux0-11环境搭建与阅读" class="headerlink" title="Linux0.11环境搭建与阅读"></a>Linux0.11环境搭建与阅读</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>更好的学习 linux 内核思想，做一个有想法的人。</p>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Gong's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">linux0.11环境搭建与阅读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-11T01:08:09.000Z" title="发表于 2022-05-11 09:08:09">2022-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-08T03:16:48.319Z" title="更新于 2022-06-08 11:16:48">2022-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="linux0.11环境搭建与阅读"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux0-11环境搭建与阅读"><a href="#Linux0-11环境搭建与阅读" class="headerlink" title="Linux0.11环境搭建与阅读"></a>Linux0.11环境搭建与阅读</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>更好的学习 linux 内核思想，做一个有想法的人。</p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>在 windows 下使用虚拟机 vmware ，虚拟机使用 ubuntu 22.04 LTS，模拟器使用 qemu 。</p>
 <p>搭建虚拟机vmware过程省略，具体的可查看 <a href="https://gonglja.github.io/posts/d78cdbc6/">archlinux的搭建</a></p>
 <h3 id="搭建ubuntu中qemu"><a href="#搭建ubuntu中qemu" class="headerlink" title="搭建ubuntu中qemu"></a>搭建ubuntu中qemu</h3><blockquote>
@@ -202,47 +203,47 @@
 <tr>
 <td></td>
 <td>CS</td>
-<td>代码段（code segment）</td>
+<td>代码段（code segment）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>DS</td>
-<td>数据段（data segment）</td>
+<td>数据段（data segment）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>SS</td>
-<td>堆栈段（stack segment）</td>
+<td>堆栈段（stack segment）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>ES</td>
-<td>附加段（extra segment）</td>
+<td>附加段（extra segment）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>SP</td>
-<td>堆栈指针(stack pointer)</td>
+<td>堆栈指针(stack pointer)寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>BP</td>
-<td>基址指针（base pointer）</td>
+<td>基址指针（base pointer）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>SI</td>
-<td>源变址指针（source index）</td>
+<td>源变址指针（source index）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>DI</td>
-<td>目的变址指针（destination index）</td>
+<td>目的变址指针（destination index）寄存器</td>
 </tr>
 <tr>
 <td></td>
 <td>IP</td>
-<td>指令指针（instruction pointer）</td>
+<td>指令指针（instruction pointer）寄存器</td>
 </tr>
 <tr>
 <td></td>
@@ -285,7 +286,7 @@
 <td></td>
 <td>ljmp</td>
 <td>长跳转</td>
-<td><code>ljmp $0xfebc,$0x12345678</code> 0xfebc用于CS寄存器，0x12345678用于EIP寄存器，换句话说，跳转至<code>0xfebc&lt;&lt;16 + 0x12345678</code>处</td>
+<td><code>ljmp $0xfebc,$0x12345678</code> <code>0xfebc</code>用于<code>CS</code>寄存器，<code>0x12345678</code>用于<code>EIP</code>寄存器，换句话说，跳转至<code>0xfebc&lt;&lt;16 + 0x12345678</code>处</td>
 </tr>
 <tr>
 <td></td>
@@ -293,9 +294,21 @@
 <td>条件跳转，CF=0，则跳转</td>
 <td><code>mov $AX,%ax;jnc label;</code> 如果AX &gt;= 0，则跳转到label处执行。</td>
 </tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据传送指令</td>
+<td>movsw</td>
+<td>从源地址向目的地址传送数据<br>在16位模式下，源地址<code>DS:SI</code> ，目的地址<code>ES:DI</code><br>在32位模式下，源地址<code>DS:ESI</code>，目的地址<code>ES:EDI</code><br>movsb、movsw、movsd 区别，b字节、w字、d双字，也即传递一个字节、一个字、一个双字。</td>
+<td></td>
+</tr>
 </tbody></table>
 <p>先看下最外层的Makefile，关注几个点</p>
-<p>当链接器链接的时候，其参数携带<code>-Ttext 0</code>，指定代码段的运行地址从0</p>
+<p>当链接器链接的时候，其参数携带<code>-Ttext 0</code>，指定代码段的运行地址从<code>0</code>开始</p>
 <p>另一个就是<code>all</code>，也就是<code>Image</code>，是由<code>boot/bootsect boot/setup tools/system</code>等编译的，编译结束后又经过<code>tools/build.sh</code>脚本构建镜像</p>
 <table>
 <thead>
@@ -414,10 +427,10 @@
 <p>movsb、movsw、movsd 区别，b字节、w字、d双字，也即传递一个字节、一个字、一个双字。</p>
 </blockquote>
 <p>所以，这段代码的作用就是将<code>ds:si</code>(<code>0x7c0:0x0</code>即<code>0x7c00</code>)处开始，大小为<code>256字</code>，即<code>512字节</code>的数据拷贝到<code>es:di</code>(<code>0x9000:0x0</code>即<code>0x90000</code>)处。</p>
-<p>也就是cpu上电后，将第一个可启动设备的前<code>512字节</code>先拷贝到<code>0x7c00</code>处，然后跳转过去执行，接着又将该部分拷贝到<code>0x90000</code>处</p>
+<p>也就是cpu上电后，bios将第一个可启动设备的前<code>512字节</code>先拷贝到<code>0x7c00</code>处，接着跳转到<code>0x7c00</code>处执行，然后又将该部分拷贝到<code>0x90000</code>处</p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204021712542.png"></p>
-<p><code>ljmp $INITSEG, $go</code> 长跳转，直接跳转至0x9000:go处。</p>
-<p>接着执行go处的代码。由于是长跳转，所以cs的值为<code>$INITSEG</code>，也就是<code>0x9000</code>。</p>
+<p><code>ljmp $INITSEG, $go</code> 长跳转，直接跳转至<code>0x9000:go</code>处。</p>
+<p>接着执行<code>go</code>处的代码。由于是长跳转，所以cs的值为<code>$INITSEG</code>，也就是<code>0x9000</code>。</p>
 <p>所以此处代码也就是将<code>ds</code>、<code>es</code>、<code>ss</code>设置为移动后代码所在的段处，并且将堆栈段 设置为<code>0x9000:0</code> - <code>0x9000:0xff00</code>，即<code>0x90000 </code>- <code>0x9ff00</code></p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">go:	 mov   %cs, %ax		#将ds，es，ss都设置成移动后代码所在的段处(0x9000)</span><br><span class="line">	mov	%ax, %ds</span><br><span class="line">	mov	%ax, %es</span><br><span class="line">	# put stack at 0x9ff00.</span><br><span class="line">	mov	%ax, %ss</span><br><span class="line">	mov	$0xFF00, %sp		# arbitrary value &gt;&gt;512</span><br></pre></td></tr></tbody></table></figure>
 
@@ -437,15 +450,16 @@
 <li>cx=0x0002 分为ch和cl，ch 柱面，cl 扇区。即0柱面2扇区。</li>
 <li>dx=0x0000 分为dh和dl，dh 磁头，dl 驱动器00H<del>7FH 软盘；80H</del>FFH 硬盘</li>
 </ul>
-<p>也就是从 软盘驱动器0的0柱面2扇区开始，拷贝4扇区到<code>es:bx</code>，也就是<code>0x9000:0x0200</code>即<code>0x90200</code></p>
+<p>也就是从 <code>软盘驱动器0</code>的<code>0柱面2扇区</code>开始，拷贝<code>4扇区</code>到<code>es:bx</code>，也就是<code>0x9000:0x0200</code>即<code>0x90200</code></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204022205260.png"></p>
-<p>拷贝的是什么东西呢？硬盘中1-5 4扇区的代码。</p>
+<p>拷贝的是什么东西呢？硬盘中1-5共4扇区的代码。</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">load_setup:</span><br><span class="line">	...</span><br><span class="line">	jnc	ok_load_setup		   # ok - continue</span><br><span class="line">	mov	$0x0000, %dx</span><br><span class="line">	mov	$0x0000, %ax		# reset the diskette</span><br><span class="line">	int	$0x13</span><br><span class="line">	jmp	load_setup</span><br></pre></td></tr></tbody></table></figure>
 
 <p>接着 因为AX&gt;=0，跳转到<code>ok_load_setup</code>执行。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ok_load_setup:</span><br><span class="line">	...</span><br><span class="line">	mov	$SYSSEG, %ax</span><br><span class="line">	mov	%ax, %es		# segment of 0x010000</span><br><span class="line">	call    read_it</span><br><span class="line">	...</span><br><span class="line">	ljmp	$SETUPSEG, $0</span><br></pre></td></tr></tbody></table></figure>
 
-<p>这部分只看主要代码，其将剩下的从6个往后的240个扇区，加载到内存<code>0x10000</code>处，简单来说，就是将代码挪了个地。</p>
+<p>这部分只看主要代码，其将剩下的从第6个扇区后面的x个扇区，加载到内存<code>0x10000</code>处，简单来说，就是将system代码挪了个地。</p>
+<p>接着一个长跳转 <code>SETUPSEG</code>，将CS设置为<code>0x9020</code>，EIP设置为<code>0x0</code> 也就是跳转到<code>0x9020&lt;&lt;16 | 0</code>即<code>0x90200</code></p>
 <p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204022213359.png"></p>
 <p>硬盘中数据是怎么分区的呢</p>
 <p>通过<code>Makefile</code>和<code>tools/build.sh</code>配合完成，其中</p>
@@ -456,17 +470,295 @@
 </li>
 <li><p>将剩下的<code>head.s</code>和其他代码编译成<code>system</code>，放在随后的240个扇区？（不一定是240扇区）</p>
 <p>  <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204022233895.png"></p>
+<p>  总结一下：cpu上电后bios将第一个可启动分区的前512字节(bootsect)拷贝到0x7c00处，并跳转过去执行，接着bootsect 又把自己搬到了0x90000处。</p>
+<p>  然后跳转过去，将2扇区-5扇区（setup）共4扇区拷贝到0x90200处。接着将6扇区以后（system）拷贝到0x10000处。最后跳转到<code>0x90200</code>处执行。</p>
+<blockquote>
+<p>在分析的过程中，我们借助<code>gdb</code>，<code>target remote :1234</code>，</p>
+<p>b *0x7c00  在0x7c00处加个断点</p>
+<p>b *0x90200 在0x90200处加个断点</p>
+<p>当跳转到 0x90200 处，通过命令 <code>x/512b 0x90200</code>/<code>x/256h 0x90200</code>处值，发现就是我们拷贝过去的第一个扇区（bootsect）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206061437146.png"></p>
+</blockquote>
 </li>
 </ul>
-<h4 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h4><h4 id="head"><a href="#head" class="headerlink" title="head"></a>head</h4><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h4 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h4><p>setup.s负责从BIOS中获取系统数据，并将这些数据放到系统内存的合适地方。这段代码询问bios 有关内存/磁盘/其它参数，并将这些参数存到一个“安全的”地方：0x90000-0x901FF。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.equ SETUPSEG, 0x9020	# this is the current segment</span><br><span class="line">...</span><br><span class="line">ljmp $SETUPSEG, $_start</span><br><span class="line">_start:</span><br><span class="line">	mov %cs,%ax</span><br><span class="line">	mov %ax,%ds</span><br><span class="line">	mov %ax,%es</span><br></pre></td></tr></tbody></table></figure>
+
+<p>跳转到相对于<code>0x90200</code>处偏移_start的位置，也就是当前_start代码的位置，更新当前ds、es寄存器值为<code>0x9020</code>。</p>
+<p>接着往下看代码，都是形似 <code>mov %ax,\$xxa;mov %bx,\$xxb;mov %cx,\$xxc;mov %dx,\$xxd;int xxe;</code>都是通过bios中断获取信息，然后将其存在内存中。</p>
+<p>存在哪呢？实际上是保存在ds寄存器值为cs，偏移为0处（cs:0 == cs&lt;&lt;16+0）。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	ljmp $SETUPSEG, $_start	</span><br><span class="line">_start:</span><br><span class="line">	mov %cs,%ax</span><br><span class="line">	mov %ax,%ds</span><br><span class="line">	...</span><br><span class="line">	int	$0x10		# save it in known place, con_init fetches</span><br><span class="line">	mov	%dx, %ds:0	# it from 0x90000.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>最终会通过bios获取到这些数据，将之存到0x90000处。</p>
+<table>
+<thead>
+<tr>
+<th>内存地址</th>
+<th>长度(字节)</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0x90000</td>
+<td>2</td>
+<td>光标位置</td>
+</tr>
+<tr>
+<td>0x90002</td>
+<td>2</td>
+<td>扩展内存数</td>
+</tr>
+<tr>
+<td>0x90004</td>
+<td>2</td>
+<td>显示页面</td>
+</tr>
+<tr>
+<td>0x90006</td>
+<td>1</td>
+<td>显示模式</td>
+</tr>
+<tr>
+<td>0x90007</td>
+<td>1</td>
+<td>字符列数</td>
+</tr>
+<tr>
+<td>0x90008</td>
+<td>2</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>0x9000A</td>
+<td>1</td>
+<td>显示内存</td>
+</tr>
+<tr>
+<td>0x9000B</td>
+<td>1</td>
+<td>显示状态</td>
+</tr>
+<tr>
+<td>0x9000C</td>
+<td>2</td>
+<td>显卡特性参数</td>
+</tr>
+<tr>
+<td>0x9000E</td>
+<td>1</td>
+<td>屏幕行数</td>
+</tr>
+<tr>
+<td>0x9000F</td>
+<td>1</td>
+<td>屏幕列数</td>
+</tr>
+<tr>
+<td>0x90080</td>
+<td>16</td>
+<td>硬盘1参数表</td>
+</tr>
+<tr>
+<td>0x90090</td>
+<td>16</td>
+<td>硬盘2参数表</td>
+</tr>
+<tr>
+<td>0x901FC</td>
+<td>2</td>
+<td>根设备号</td>
+</tr>
+</tbody></table>
+<p>将以上信息存储到0x90000处后，将关闭中断。因为后面我们要自己实现中断，并且将bios的中断向量表破坏掉，所以这个时候是不允许中断进来的。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">cli	</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure>
+
+<p>看下面的部分，是不很熟悉<code>movsw</code>，是一个数据传送指令，将一段数据从源地址传送到目的地址，详见<a href="#%E6%8C%87%E4%BB%A4">指令</a>。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	mov	$0x0000, %ax</span><br><span class="line">	cld			# 'direction'=0, movs moves forward</span><br><span class="line">do_move:</span><br><span class="line">	mov	%ax, %es	# destination segment</span><br><span class="line">	add	$0x1000, %ax</span><br><span class="line">	cmp	$0x9000, %ax</span><br><span class="line">	jz	end_move</span><br><span class="line">	mov	%ax, %ds	# source segment</span><br><span class="line">	sub	%di, %di</span><br><span class="line">	sub	%si, %si</span><br><span class="line">	mov 	$0x8000, %cx</span><br><span class="line">	rep</span><br><span class="line">	movsw</span><br><span class="line">	jmp	do_move</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这段代码，也就是将system 模块移动到新的位置，新位置起始为0。</p>
+<p>与以下c代码相同。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> add[<span class="number">0x90000</span>];</span><br><span class="line"><span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0x10000</span>; i&lt;<span class="number">0x90000</span>;i++){</span><br><span class="line">	add[j++] = add[i];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204031107523.png"></p>
+<p>重新规划后内存布局如下，</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204031147192.png"></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzk0MjE3NDE0Ng==&amp;mid=2247499667&amp;idx=1&amp;sn=a7e2297f16d048794fa31cceaa183fc9&amp;chksm=c2c5853ef5b20c286df24a28013f0fc3b0336790eca4a0d069ab831f6c536c03d1398893534b&amp;cur_album_id=2123743679373688834&amp;scene=189#wechat_redirect">切换到保护模式</a></p>
+<p>实模式与保护模式的第一个区别：物理地址计算方式不同</p>
+<p>实模式下：物理地址为段寄存器中的地址&lt;&lt;16 + 偏移地址。</p>
+<p>保护模式下：段寄存器中 存的是段选择子，段选择子去全局描述符中寻找段选择符，从中取出段基地址 再加上偏移地址才是物理地址。</p>
+<blockquote>
+<p>“计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决”。</p>
+<p>“Any problem  in computer science can be solved by anther layer of indirection.”</p>
+</blockquote>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206061651461.png" style="zoom:50%;">
+
+<p><strong>段选择子结构</strong></p>
+<p>由段描述符索引 以及TI、RPL组成</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206061654823.png"></p>
+<p><strong>段描述符结构</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204040913252.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206061743389.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206061744063.png"></p>
+<p><strong>全局描述符表寄存器</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204040902532.png"></p>
+<p>也就是说：<strong>进入保护模式之后，物理地址计算方式发生改变，在仅有段机制的情况下，段寄存器(cs)中存的不再是段基址，而是段选择子，段选择子结构如上，</strong></p>
+<p><strong>段选择子中存的是段描述符索引，通过段描述符索引就可以从全局描述符表(gdt)中取出对应的段描述符结构，其中包含段基地址，段基地址+偏移地址就是物理地址。</strong></p>
+<p><strong>全局描述符表(gdt)在哪存呢？内存中，在哪个位置呢？这时候就有一个专门的寄存器gdtr去存储gdt的位置，其结构如上。</strong></p>
+<p>所以，以下前两句代码，也就是将idt/gdt的地址存储到idtr/gdtr中；中间的代码(gdt_48标签处)则描述了全局描述符表寄存器的配置值，低16位：gdt界限，也就是全局描述符表的长度，高32位，描述了全局描述符表的内存地址；后面的代码(gdt标签处)描述了3个段描述符，第一个为空，第二个是代码段描述符(type=code)，第三个是数据段描述符(type=data)，第二个和第三个基地址均为0，那么也就是说在后面不管通过段选择子选择的是代码段还是数据段，其基地址为0，实际物理地址（仅段模式机制下，否则称为线性地址）等于偏移地址。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">lidt fword ptr idt_48			;// 加载中断描述符表(idt)寄存器，idt_48 是6 字节操作数的位置</span><br><span class="line">lgdt fword ptr gdt_48		      ;// 加载全局描述符表(gdt)寄存器，gdt_48 是6 字节操作数的位置</span><br><span class="line">...</span><br><span class="line">gdt_48:</span><br><span class="line">	dw	800h		         ;// 全局表长度为2k 字节，因为每8 字节组成一个段描述符项，所以表中共可有256 项</span><br><span class="line">	dw	512+gdt,9h	            ;// 4 个字节构成的内存线性地址：(0009&lt;&lt;16 + 0200)+gdt，也即90200 + gdt(即在本程序段中的偏移地址)。</span><br><span class="line">...</span><br><span class="line">gdt:</span><br><span class="line">	.word	0,0,0,0		  # dummy</span><br><span class="line"></span><br><span class="line">	.word	0x07FF		# 8Mb - limit=2047 (2048*4096=8Mb)</span><br><span class="line">	.word	0x0000		# base address=0</span><br><span class="line">	.word	0x9A00		# code read/exec</span><br><span class="line">	.word	0x00C0		# granularity=4096, 386</span><br><span class="line"></span><br><span class="line">	.word	0x07FF		# 8Mb - limit=2047 (2048*4096=8Mb)</span><br><span class="line">	.word	0x0000		# base address=0</span><br><span class="line">	.word	0x9200		# data read/write</span><br><span class="line">	.word	0x00C0		# granularity=4096, 386</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204040918662.png"></p>
+<blockquote>
+<p>这个图描述了如何从逻辑地址经过分段、分页之后得到物理地址的。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204041906123.png"></p>
+</blockquote>
+<p>开启A20线</p>
+<blockquote>
+<p>A20地址线是为了突破20位地址线的限制，变成32位可用，所以即使地址线有32位了，但是你如果不手动开启，还是会限制20位可用。现在的CPU位数都32位、64位，为了兼容以前的20位地址总线，便有了此选项。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">inb     $0x92, %al	# open A20 line(Fast Gate A20).</span><br><span class="line">orb     $0x02, %al</span><br><span class="line">outb    %al, $0x92</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>接着是对可编程中断控制器 8259 芯片的编程，一堆代码不用看，其作用就是重新配置中断号IRQ0-IRQ15的功能。</p>
+<table>
+<thead>
+<tr>
+<th align="center">PIC 请求号</th>
+<th align="center">中断号</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">IRQ0</td>
+<td align="center">0x20</td>
+<td align="center">时钟中断</td>
+</tr>
+<tr>
+<td align="center">IRQ1</td>
+<td align="center">0x21</td>
+<td align="center">键盘中断</td>
+</tr>
+<tr>
+<td align="center">IRQ2</td>
+<td align="center">0x22</td>
+<td align="center">接连从芯片</td>
+</tr>
+<tr>
+<td align="center">IRQ3</td>
+<td align="center">0x23</td>
+<td align="center">串口2</td>
+</tr>
+<tr>
+<td align="center">IRQ4</td>
+<td align="center">0x24</td>
+<td align="center">串口1</td>
+</tr>
+<tr>
+<td align="center">IRQ5</td>
+<td align="center">0x25</td>
+<td align="center">并口2</td>
+</tr>
+<tr>
+<td align="center">IRQ6</td>
+<td align="center">0x26</td>
+<td align="center">软盘驱动器</td>
+</tr>
+<tr>
+<td align="center">IRQ7</td>
+<td align="center">0x27</td>
+<td align="center">并口1</td>
+</tr>
+<tr>
+<td align="center">IRQ8</td>
+<td align="center">0x28</td>
+<td align="center">实时钟中断</td>
+</tr>
+<tr>
+<td align="center">IRQ9</td>
+<td align="center">0x29</td>
+<td align="center">保留</td>
+</tr>
+<tr>
+<td align="center">IRQ10</td>
+<td align="center">0x2a</td>
+<td align="center">保留</td>
+</tr>
+<tr>
+<td align="center">IRQ11</td>
+<td align="center">0x2b</td>
+<td align="center">保留</td>
+</tr>
+<tr>
+<td align="center">IRQ12</td>
+<td align="center">0x2c</td>
+<td align="center">鼠标中断</td>
+</tr>
+<tr>
+<td align="center">IRQ13</td>
+<td align="center">0x2d</td>
+<td align="center">数学协处理器</td>
+</tr>
+<tr>
+<td align="center">IRQ14</td>
+<td align="center">0x2e</td>
+<td align="center">硬盘中断</td>
+</tr>
+<tr>
+<td align="center">IRQ15</td>
+<td align="center">0x2f</td>
+<td align="center">保留</td>
+</tr>
+</tbody></table>
+<p>打开cr0寄存器的第0位，也即开启了保护模式。模式的切换非常简单，重要的是前期的准备工作。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204040953220.png"></p>
+<p>起初是先给ax赋值为0x0001，后面通过lmsw命令将ax的值给到cr0寄存器。</p>
+<p>但是后来可以直接通过mov 指令读写cr0寄存器，这样就可以读出cr0的值，然后将0位置1，接着在写回cr0，这样也能实现。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#mov	$0x0001, %ax	# protected mode (PE) bit</span><br><span class="line">#lmsw	%ax		# This is it!</span><br><span class="line">mov	%cr0, %eax	# get machine status(cr0|MSW)	</span><br><span class="line">bts	$0, %eax	# turn on the PE-bit </span><br><span class="line">mov	%eax, %cr0	# protection enabled</span><br></pre></td></tr></tbody></table></figure>
+
+<p>接着就是直接跳转到物理地址 0 处了。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.equ	sel_cs0, 0x0008 # select for code segment 0 (  001:0 :00) </span><br><span class="line">ljmp	$sel_cs0, $0	# jmp offset 0 of code segment 0 in gdt</span><br></pre></td></tr></tbody></table></figure>
+
+<p>首先将<code>sel_cs0</code>置为<code>0x0008</code>，由于是保护模式，所以<code>ds</code>为段选择子，其值为<code>0x0008</code>，<code>0b0000_0000_0000_1000</code>，描述符索引为<code>0b0000_0000_0000_1</code>，也就是<code>1</code>，前面我们设定的段描述符，第0个为空，第1个为代码段，第2个为数据段，也就是代码段，其基地址为0，所以此处也就是跳转到0地址处。</p>
+<h4 id="head"><a href="#head" class="headerlink" title="head"></a>head</h4><p>由最外层的Makefile可得，system由<code>boot/head.o</code>、<code>init/main.o</code>及其它组成，并且system在bootsect中被转移至0处。</p>
+<p>所以在setup中跳转到0处，也就是跳转到head中了。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pg_dir:</span><br><span class="line">.globl startup_32</span><br><span class="line">startup_32:</span><br><span class="line">	movl $0x10,%eax</span><br><span class="line">	mov %ax,%ds</span><br><span class="line">	mov %ax,%es</span><br><span class="line">	mov %ax,%fs</span><br><span class="line">	mov %ax,%gs</span><br><span class="line">	lss stack_start,%esp</span><br><span class="line">	call setup_idt</span><br><span class="line">	call setup_gdt</span><br><span class="line">	movl $0x10,%eax	   # reload all the segment registers</span><br><span class="line">	mov %ax,%ds		# after changing gdt. CS was already</span><br><span class="line">	mov %ax,%es		# reloaded in 'setup_gdt'</span><br><span class="line">	mov %ax,%fs</span><br><span class="line">	mov %ax,%gs</span><br><span class="line">	lss stack_start,%esp</span><br></pre></td></tr></tbody></table></figure>
+
+<p>看下代码，刚开始有个标号<code>pg_dir</code>，这个是页目录，之后设置分页机制得时候，页目录会放这，覆盖这里得代码。</p>
+<p>往下走，就是给eax赋值为0x10，给 ds、es、fs、gs赋值0x10(0b0001_0000)，也就是0b0001_0 即2，索引为2的段为数据段。</p>
+<p>然后<code>lss stack_start,%esp</code>，将<code>stack_start</code>高位给ss，低16位给esp。（之前是0x9ff00，现在要换到_stack_start）</p>
+<p>stack_start这个标号在sched.c中，（关于为什么是start_start 而不是_stack_start这个是因为cdecl调用规约中第4条:编译后的函数名前缀以一个下划线字符开始）</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> user_stack [ <span class="number">4096</span>&gt;&gt;<span class="number">2</span> ] ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> {</span></span><br><span class="line">	<span class="keyword">long</span> * a;</span><br><span class="line">	<span class="keyword">short</span> b;</span><br><span class="line">	} stack_start = { &amp; user_stack [<span class="number">4096</span>&gt;&gt;<span class="number">2</span>] , <span class="number">0x10</span> };</span><br></pre></td></tr></tbody></table></figure>
+
+<p>也就是将高位0x10给ss，低位<code>user_stack [4096&gt;&gt;2]</code> 的元素的下一个地址值给esp，0x10也就是0x0001_0000表示指向全局描述符的第0x0001_0个段，第2个为data段，其基地址为0。</p>
+<p><code>call setup_idt</code>设置中断描述符表<br><code>call setup_gdt</code>设置全局描述符表</p>
+<p>然后又重新设置一遍，为什么要重新设置？在上面设置中断/全局描述符表的时候，修改了gdt，所以要重新设置才会生效。</p>
+<p>接下来重点看 <code>setup_idt</code>/<code>setup_gdt</code>。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">setup_idt:</span><br><span class="line">	lea ignore_int,%edx</span><br><span class="line">	movl $0x00080000,%eax</span><br><span class="line">	movw %dx,%ax		/* selector = 0x0008 = cs */</span><br><span class="line">	movw $0x8E00,%dx	/* interrupt gate - dpl=0, present */</span><br><span class="line"></span><br><span class="line">	lea idt,%edi</span><br><span class="line">	mov $256,%ecx</span><br><span class="line">rp_sidt:</span><br><span class="line">	movl %eax,(%edi)</span><br><span class="line">	movl %edx,4(%edi)</span><br><span class="line">	addl $8,%edi</span><br><span class="line">	dec %ecx</span><br><span class="line">	jne rp_sidt</span><br><span class="line">	lidt idt_descr</span><br><span class="line">	ret</span><br><span class="line">...</span><br><span class="line">idt_descr:</span><br><span class="line">	.word 256*8-1		# idt contains 256 entries</span><br><span class="line">	.long idt</span><br><span class="line">...</span><br><span class="line">idt:	.fill 256,8,0		# idt is uninitialized #256项，每项8字节，填0</span><br></pre></td></tr></tbody></table></figure>
+
+<p>设置256个中断描述符，每个中断描述符中的中断处理都指向<code>ignore_int</code>，这是个默认的中断处理程序，后面慢慢会被具体的中断程序覆盖。</p>
+<p>setup_gdt也是如此，设置后的gdt如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gdt:   .quad 0x0000000000000000	/* NULL descriptor */</span><br><span class="line">	.quad 0x00c09a0000000fff	/* 16Mb */</span><br><span class="line">	.quad 0x00c0920000000fff	/* 16Mb */</span><br><span class="line">	.quad 0x0000000000000000	/* TEMPORARY - don't use */</span><br><span class="line">	.fill 252,8,0			/* space for LDT's and TSS's etc */</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204041145317.png"></p>
+<p>开启分页机制</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">	...</span><br><span class="line">	jmp after_page_tables</span><br><span class="line">	...</span><br><span class="line">after_page_tables:</span><br><span class="line">	pushl $0		# These are the parameters to main :-)</span><br><span class="line">	pushl $0</span><br><span class="line">	pushl $0</span><br><span class="line">	pushl $L6		# return address for main, if it decides to.</span><br><span class="line">	pushl $main</span><br><span class="line">	jmp setup_paging</span><br><span class="line">L6:</span><br><span class="line">	jmp L6</span><br><span class="line">	...</span><br><span class="line">	</span><br><span class="line">.align 2</span><br><span class="line">setup_paging:</span><br><span class="line">	movl $1024*5,%ecx		/* 5 pages - pg_dir+4 page tables */</span><br><span class="line">	xorl %eax,%eax</span><br><span class="line">	xorl %edi,%edi			/* pg_dir is at 0x000 */</span><br><span class="line">	cld;rep;stosl</span><br><span class="line">	movl $pg0+7,pg_dir		/* 7--&gt;111-&gt; set User/supervisor Read/Write Present */</span><br><span class="line">	movl $pg1+7,pg_dir+4	/*  --------- " " --------- */</span><br><span class="line">	movl $pg2+7,pg_dir+8	/*  --------- " " --------- */</span><br><span class="line">	movl $pg3+7,pg_dir+12	/*  --------- " " --------- */</span><br><span class="line">	movl $pg3+4092,%edi</span><br><span class="line">	movl $0xfff007,%eax		/*  16Mb - 4096 + 7 (r/w user,p) */</span><br><span class="line">	std</span><br><span class="line">1:	stosl			/* fill pages backwards - more efficient :-) */</span><br><span class="line">	subl $0x1000,%eax</span><br><span class="line">	jge 1b</span><br><span class="line">	cld</span><br><span class="line">	xorl %eax,%eax		/* pg_dir is at 0x0000 */</span><br><span class="line">	movl %eax,%cr3		/* cr3 - page directory start */</span><br><span class="line">	movl %cr0,%eax</span><br><span class="line">	orl $0x80000000,%eax</span><br><span class="line">	movl %eax,%cr0		/* set paging (PG) bit */</span><br><span class="line">	ret			/* this also flushes prefetch-queue */</span><br><span class="line">	...</span><br><span class="line">.org 0x1000</span><br><span class="line">pg0:</span><br><span class="line"></span><br><span class="line">.org 0x2000</span><br><span class="line">pg1:</span><br><span class="line"></span><br><span class="line">.org 0x3000</span><br><span class="line">pg2:</span><br><span class="line"></span><br><span class="line">.org 0x4000</span><br><span class="line">pg3:</span><br><span class="line"></span><br><span class="line">.org 0x5000</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>如何进入main</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/cx_vaRTcC29h0pWkJPpqQQ">调试 Linux 最早期的代码</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45709295/article/details/120007503">Ubuntu20.04编译安装qemu</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36393978/article/details/118353939">qemu运行虚拟机无反应，只输出一行提示信息:VNC server running on 127.0.0.1:5900</a></li>
 <li><a target="_blank" rel="noopener" href="http://blog.chinaunix.net/uid-26833883-id-3746968.html">连接的时候指定-Ttext 和指定-Tmap.lds的区别</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-dd.html">Linux dd 命令</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.only2fire.com/archives/87.html">BIOS int 13H中断介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/259625135">汇编指令——用GDB调试汇编</a></li>
 </ol>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lj gong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://gonglja.github.io/posts/ca3a0e2a/">http://gonglja.github.io/posts/ca3a0e2a/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://gonglja.github.io" target="_blank">Gong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/6c58185/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ubuntu下docker的使用</div></div></a></div><div class="next-post pull-right"><a href="/posts/4a17b156/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lj gong</div><div class="author-info__description">蓬生麻中，不扶而直，白沙在涅，与之俱黑。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gonglja"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/gonglja" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:glj0@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2022重新出发！加油加油</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux0-11%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%98%85%E8%AF%BB"><span class="toc-number">1.</span> <span class="toc-text">Linux0.11环境搭建与阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAubuntu%E4%B8%ADqemu"><span class="toc-number">1.2.1.</span> <span class="toc-text">搭建ubuntu中qemu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEgdb%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.2.</span> <span class="toc-text">配置gdb环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">代码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boot"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">boot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bootsect"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">bootsect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#setup"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">setup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#head"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">head</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/b6db5676/" title="c语言运算符优先级"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c语言运算符优先级"/></a><div class="content"><a class="title" href="/posts/b6db5676/" title="c语言运算符优先级">c语言运算符优先级</a><time datetime="2022-05-23T09:50:02.000Z" title="发表于 2022-05-23 17:50:02">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6c58185/" title="ubuntu下docker的使用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ubuntu下docker的使用"/></a><div class="content"><a class="title" href="/posts/6c58185/" title="ubuntu下docker的使用">ubuntu下docker的使用</a><time datetime="2022-05-11T10:38:23.000Z" title="发表于 2022-05-11 18:38:23">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux0.11环境搭建与阅读"/></a><div class="content"><a class="title" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读">linux0.11环境搭建与阅读</a><time datetime="2022-05-11T01:08:09.000Z" title="发表于 2022-05-11 09:08:09">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156/" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2022-05-05T07:04:35.959Z" title="发表于 2022-05-05 15:04:35">2022-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/9faa78d2/" title="设备树"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设备树"/></a><div class="content"><a class="title" href="/posts/9faa78d2/" title="设备树">设备树</a><time datetime="2022-04-29T00:57:30.000Z" title="发表于 2022-04-29 08:57:30">2022-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By lj gong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lj gong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://gonglja.github.io/posts/ca3a0e2a/">http://gonglja.github.io/posts/ca3a0e2a/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://gonglja.github.io" target="_blank">Gong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/6c58185/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ubuntu下docker的使用</div></div></a></div><div class="next-post pull-right"><a href="/posts/4a17b156/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/f2b20ab4/" title="一个简单的测试Linux进程栈空间大小的方法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/20220310100235.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-10</div><div class="title">一个简单的测试Linux进程栈空间大小的方法</div></div></a></div><div><a href="/posts/6b3e9b20/" title="在ubuntu下更新自编译内核"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-24</div><div class="title">在ubuntu下更新自编译内核</div></div></a></div><div><a href="/posts/9faa78d2/" title="设备树"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-29</div><div class="title">设备树</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lj gong</div><div class="author-info__description">蓬生麻中，不扶而直，白沙在涅，与之俱黑。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gonglja"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/gonglja" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:glj0@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2022重新出发！加油加油</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux0-11%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%98%85%E8%AF%BB"><span class="toc-number">1.</span> <span class="toc-text">Linux0.11环境搭建与阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAubuntu%E4%B8%ADqemu"><span class="toc-number">1.2.1.</span> <span class="toc-text">搭建ubuntu中qemu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEgdb%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.2.</span> <span class="toc-text">配置gdb环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">代码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boot"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">boot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bootsect"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">bootsect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#setup"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">setup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#head"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">head</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/42edd7ca/" title="docker下使用Dokerfile创建image"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206081114268.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker下使用Dokerfile创建image"/></a><div class="content"><a class="title" href="/posts/42edd7ca/" title="docker下使用Dokerfile创建image">docker下使用Dokerfile创建image</a><time datetime="2022-06-08T02:52:40.000Z" title="发表于 2022-06-08 10:52:40">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b6db5676/" title="c语言运算符优先级"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c语言运算符优先级"/></a><div class="content"><a class="title" href="/posts/b6db5676/" title="c语言运算符优先级">c语言运算符优先级</a><time datetime="2022-05-23T09:50:02.000Z" title="发表于 2022-05-23 17:50:02">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6c58185/" title="ubuntu下docker的使用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ubuntu下docker的使用"/></a><div class="content"><a class="title" href="/posts/6c58185/" title="ubuntu下docker的使用">ubuntu下docker的使用</a><time datetime="2022-05-11T10:38:23.000Z" title="发表于 2022-05-11 18:38:23">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux0.11环境搭建与阅读"/></a><div class="content"><a class="title" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读">linux0.11环境搭建与阅读</a><time datetime="2022-05-11T01:08:09.000Z" title="发表于 2022-05-11 09:08:09">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156/" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2022-05-05T07:04:35.959Z" title="发表于 2022-05-05 15:04:35">2022-05-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By lj gong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
