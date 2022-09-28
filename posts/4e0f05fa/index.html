@@ -1,150 +1,327 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Multiboot规范 | Gong's Blog</title><meta name="keywords" content="boot"><meta name="author" content="lj gong"><meta name="copyright" content="lj gong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="原英文 https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;grub&#x2F;manual&#x2F;multiboot&#x2F;multiboot.html   原文地址 blog.csdn.net  [TOC] Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。    概览   术语   规范   示例   历史">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="gong lj">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="原英文 https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;grub&#x2F;manual&#x2F;multiboot&#x2F;multiboot.html   原文地址 blog.csdn.net  [TOC] Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。    概览   术语   规范   示例   历史">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Multiboot规范">
 <meta property="og:url" content="http://gonglja.github.io/posts/4e0f05fa/index.html">
-<meta property="og:site_name" content="Gong&#39;s Blog">
+<meta property="og:site_name" content="Sky Road">
 <meta property="og:description" content="原英文 https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;grub&#x2F;manual&#x2F;multiboot&#x2F;multiboot.html   原文地址 blog.csdn.net  [TOC] Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。    概览   术语   规范   示例   历史">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png">
 <meta property="article:published_time" content="2022-03-01T14:13:25.000Z">
 <meta property="article:modified_time" content="2022-06-08T14:13:43.725Z">
-<meta property="article:author" content="lj gong">
+<meta property="article:author" content="gong lj">
 <meta property="article:tag" content="boot">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gonglja.github.io/posts/4e0f05fa/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: true,
-  isAnchor: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Multiboot规范',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: undefined,
-  isToc: true,
-  postUpdate: '2022-06-08 22:13:43'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Multiboot规范 - Sky Road</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gonglja.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"ba9ad47a532e073820aabc9b0ffb6c5b","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.0.0">
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?ba9ad47a532e073820aabc9b0ffb6c5b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Gong's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Multiboot规范</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-01T14:13:25.000Z" title="发表于 2022-03-01 22:13:25">2022-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-08T14:13:43.725Z" title="更新于 2022-06-08 22:13:43">2022-06-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/">好文转载</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">10.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>39分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Multiboot规范"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sky Road</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Multiboot规范"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-01 22:13" pubdate>
+          2022年3月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          24k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          202 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Multiboot规范</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2022年6月8日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
 <p>原英文 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/grub/manual/multiboot/multiboot.html">https://www.gnu.org/software/grub/manual/multiboot/multiboot.html</a></p>
 </blockquote>
 <blockquote>
@@ -387,38 +564,38 @@
 <p>在进入操作系统时，EBX 寄存器包含 Multiboot 信息数据结构的物理地址，引导程序通过它将重要的引导信息传递给操作系统。操作系统可以按自己的需要使用或者忽略任何部分；所有的引导程序传递的信息只是建议性的。</p>
 <p>Multiboot 信息结构和它的相关的子结构可以由引导程序放在任何位置（当然，除了保留给内核和引导模块的区域）。如何在利用之前保护它是操作系统的责任。</p>
 <p>Multiboot 信息结构（就目前为止定义的）的格式如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">        +-------------------+</span><br><span class="line">0       | flags             |    (必需)</span><br><span class="line">        +-------------------+</span><br><span class="line">4       | mem_lower         |    (如果flags[0]被置位则出现)</span><br><span class="line">8       | mem_upper         |    (如果flags[0]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">12      | boot_device       |    (如果flags[1]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">16      | cmdline           |    (如果flags[2]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">20      | mods_count        |    (如果flags[3]被置位则出现)</span><br><span class="line">24      | mods_addr         |    (如果flags[3]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">28 - 40 | syms              |    (如果flags[4]或</span><br><span class="line">        |                   |        flags[5]被置位则出现)            </span><br><span class="line">        +-------------------+</span><br><span class="line">44      | mmap_length       |    (如果flags[6]被置位则出现)</span><br><span class="line">48      | mmap_addr         |    (如果flags[6]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">52      | drives_length     |    (如果flags[7]被置位则出现)</span><br><span class="line">56      | drives_addr       |    (如果flags[7]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">60      | config_table      |    (如果flags[8]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">64      | boot_loader_name  |    (如果flags[9]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">68      | apm_table         |    (如果flags[10]被置位则出现)</span><br><span class="line">        +-------------------+</span><br><span class="line">72      | vbe_control_info  |    (如果flags[11]被置位则出现)</span><br><span class="line">76      | vbe_mode_info     |</span><br><span class="line">80      | vbe_mode          |</span><br><span class="line">82      | vbe_interface_seg |</span><br><span class="line">84      | vbe_interface_off |</span><br><span class="line">86      | vbe_interface_len |</span><br><span class="line">        +-------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs html">        +-------------------+<br>0       | flags             |    (必需)<br>        +-------------------+<br>4       | mem_lower         |    (如果flags[0]被置位则出现)<br>8       | mem_upper         |    (如果flags[0]被置位则出现)<br>        +-------------------+<br>12      | boot_device       |    (如果flags[1]被置位则出现)<br>        +-------------------+<br>16      | cmdline           |    (如果flags[2]被置位则出现)<br>        +-------------------+<br>20      | mods_count        |    (如果flags[3]被置位则出现)<br>24      | mods_addr         |    (如果flags[3]被置位则出现)<br>        +-------------------+<br>28 - 40 | syms              |    (如果flags[4]或<br>        |                   |        flags[5]被置位则出现)            <br>        +-------------------+<br>44      | mmap_length       |    (如果flags[6]被置位则出现)<br>48      | mmap_addr         |    (如果flags[6]被置位则出现)<br>        +-------------------+<br>52      | drives_length     |    (如果flags[7]被置位则出现)<br>56      | drives_addr       |    (如果flags[7]被置位则出现)<br>        +-------------------+<br>60      | config_table      |    (如果flags[8]被置位则出现)<br>        +-------------------+<br>64      | boot_loader_name  |    (如果flags[9]被置位则出现)<br>        +-------------------+<br>68      | apm_table         |    (如果flags[10]被置位则出现)<br>        +-------------------+<br>72      | vbe_control_info  |    (如果flags[11]被置位则出现)<br>76      | vbe_mode_info     |<br>80      | vbe_mode          |<br>82      | vbe_interface_seg |<br>84      | vbe_interface_off |<br>86      | vbe_interface_len |<br>        +-------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>第一个 longword 指出 Multiboot 信息结构中的其它域是否有效。所有目前未定义的位必须被引导程序设为 0。操作系统应该忽略任何它不理解的位。因此，flags 域也可以视作一个版本标志符，这样可以无破坏的扩展 Multiboot 信息结构。</p>
 <p>如果设置了 flags 中的第 0 位，则 mem_* 域有效。mem_lower 和 mem_upper 分别指出了低端和高端内存的大小，单位是 K。低端内存的首地址是 0，高端内存的首地址是 1M。低端内存的最大可能值是 640K。返回的高端内存的最大可能值是最大值减去 1M。但并不保证是这个值。</p>
 <p>如果设置了 flags 中的第 1 位，则 boot_device 域有效，并指出引导程序从哪个 BIOS 磁盘设备载入的 OS 映像。如果 OS 映像不是从一个 BIOS 磁盘载入的，这个域就决不能出现（第 3 位必须是 0）。操作系统可以使用这个域来帮助确定它的 root 设备，但并不一定要这样做。boot_device 域由四个单字节的子域组成：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+-------+-------+-------+-------+</span><br><span class="line">| part3 | part2 | part1 | drive |</span><br><span class="line">+-------+-------+-------+-------+</span><br><span class="line">最低有效字节						最高有效字节</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html">+-------+-------+-------+-------+<br>| part3 | part2 | part1 | drive |<br>+-------+-------+-------+-------+<br>最低有效字节						最高有效字节<br></code></pre></td></tr></tbody></table></figure>
 
 <p>最高有效字节字节包含了 BIOS 驱动器号，它的格式与 BIOS 的 INT0x13 低级磁盘接口相同：例如，0x00 代表第一个软盘驱动器，0x80 代表第一个硬盘驱动器。</p>
 <p>剩下的三个字节指出了引导分区。part1 指出顶级分区号，part2 指出一个顶级分区中的一个子分区，等等。分区号总是从 0 开始。不使用的分区字节必须被设为 0xFF。例如，如果磁盘被简单的分为单一的一层 DOS 分区，则 part1 包含这个 DOS 分区号，part2 和 part3 都是 0xFF。另一个例子是，如果一个磁盘先被分为 DOS 分区，并且其中的一个 DOS 分区又被分为几个使用 BSD 磁盘标签策略的 BSD 分区，则 part1 包含 DOS 分区号，part2 包含 DOS 分区内的 BSD 子分区，part3 是 0xFF。</p>
 <p>DOS 扩展分区的分区号从 4 开始，而不是像嵌套子分区一样，尽管扩展分区的底层分布就是分层嵌套的。例如，如果引导程序从传统的 DOS 风格磁盘的第二个分区启动，则 part1 是 5，part2 和 part3 都是 0xFF。</p>
 <p>如果设置了 flags longword 的第 2 位，则 cmdline 域有效，并包含要传送给内核的命令行参数的物理地址。命令行参数是一个正常 C 风格的以 0 终止的字符串。</p>
 <p>如果设置了 flags 的第 3 位，则 mods 域指出了同内核一同载入的有哪些引导模块，以及在哪里能找到它们。mods_count 包含了载入的模块的个数；mods_addr 包含了第一个模块结构的物理地址。mods_count 可以是 0，这表示没有载入任何模块，即使设置了 flags 的第 1 位时也有可能是这样。每个模块结构的格式如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">        +-------------------+</span><br><span class="line">0       | mod_start         |</span><br><span class="line">4       | mod_end           |</span><br><span class="line">        +-------------------+</span><br><span class="line">8       | string            |</span><br><span class="line">        +-------------------+</span><br><span class="line">12      | reserved (0)      |</span><br><span class="line">        +-------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html">        +-------------------+<br>0       | mod_start         |<br>4       | mod_end           |<br>        +-------------------+<br>8       | string            |<br>        +-------------------+<br>12      | reserved (0)      |<br>        +-------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>前两个域包含了引导模块的开始和结束地址。string 域提供了一个自定义的与引导模块相关的字符串；它是以 0 中止的 ASCII 字符串，同内核命令行参数一样。如果没有什么与模块有关的字符串，string 域可以是 0。典型情况下，这个字符串也许是命令行参数（例如，如果操作系统将引导模块视作可执行程序的话），或者一个路径名（例如，如果操作系统将引导模块视作文件系统中的文件的话），它的意义取决于操作系统。reserved 域必须由引导程序设为 0 并被操作系统忽略。</p>
 <p><strong>注意：</strong>第 4 位和第 5 位是互斥的。</p>
 <p>如果设置了 flags 的第 4 位，则下面从 Multiboot 信息结构的第 28 位开始的域是有效的：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        +-------------------+</span><br><span class="line">28      | tabsize           |</span><br><span class="line">32      | strsize           |</span><br><span class="line">36      | addr              |</span><br><span class="line">40      | reserved (0)      |</span><br><span class="line">        +-------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight gherkin"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">        +-------------------+<br>28      |<span class="hljs-string"> tabsize           </span>|<br>32      |<span class="hljs-string"> strsize           </span>|<br>36      |<span class="hljs-string"> addr              </span>|<br>40      |<span class="hljs-string"> reserved (0)      </span>|<br>        +-------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>这指出在哪里可以找到 a.out 格式内核映像的符号表。addr 是 a.out 格式的 nlist 结构数组的大小（4 字节无符号长整数）的物理地址，紧接着是数组本身，然后是一系列以 0 中止的 ASCII 字符串的大小（4 字节无符号长整数，加上 sizeof(unsigned long)），然后是字符串本身。tabsize 等于符号表的大小参数（位于符号 section 的头部），strsize 等于符号表指向的字符串表的大小参数（位于 string section 的头部）。注意 tabsize 可以是 0，这意味着没有符号，尽管已经设置了 flags 的第 4 位。</p>
 <p>如果设置了 flags 的第 5 位，则下面从 Multiboot 信息结构的第 28 位开始的域是有效的：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        +-------------------+</span><br><span class="line">28      | num               |</span><br><span class="line">32      | size              |</span><br><span class="line">36      | addr              |</span><br><span class="line">40      | shndx             |</span><br><span class="line">        +-------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight gherkin"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">        +-------------------+<br>28      |<span class="hljs-string"> num               </span>|<br>32      |<span class="hljs-string"> size              </span>|<br>36      |<span class="hljs-string"> addr              </span>|<br>40      |<span class="hljs-string"> shndx             </span>|<br>        +-------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>这指出在哪里可以找到 ELF 格式内核映像的 section 头表、每项的大小、一共有几项以及作为名字索引的字符串表。它们对应于可执行可连接格式（ELF）的 program 头中的<code>shdr_*</code> 项（shdr_num 等）。所有的 section 都会被载入，ELF section 头的物理地址域指向所有的 section 在内存中的位置（参见 i386 ELF 文档以得到如何读取 section 头的更多的细节）。注意，shdr_num 可以是 0，标志着没有符号，尽管已经设置了 flags 的第 5 位。</p>
 <p>如果设置了 flags 的第 6 位，则 mmap_* 域是有效的，指出保存由 BIOS 提供的内存分布的缓冲区的地址和长度。mmap_addr 是缓冲区的地址，mmap_length 是缓冲区的总大小。缓冲区由一个或者多个下面的大小 / 结构对（size 实际上是用来跳过下一个对的）组成的：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">        +-------------------+</span><br><span class="line">-4      | size              |</span><br><span class="line">        +-------------------+</span><br><span class="line">0       | base_addr_low     |</span><br><span class="line">4       | base_addr_high    |</span><br><span class="line">8       | length_low        |</span><br><span class="line">12      | length_high       |</span><br><span class="line">16      | type              |</span><br><span class="line">        +-------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight gherkin"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">        +-------------------+<br>-4      |<span class="hljs-string"> size              </span>|<br>        +-------------------+<br>0       |<span class="hljs-string"> base_addr_low     </span>|<br>4       |<span class="hljs-string"> base_addr_high    </span>|<br>8       |<span class="hljs-string"> length_low        </span>|<br>12      |<span class="hljs-string"> length_high       </span>|<br>16      |<span class="hljs-string"> type              </span>|<br>        +-------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>size 是相关结构的大小，单位是字节，它可能大于最小值 20。base_addr_low 是启动地址的低 32 位，base_addr_high 是高 32 位，启动地址总共有 64 位。length_low 是内存区域大小的低 32 位，length_high 是内存区域大小的高 32 位，总共是 64 位。type 是相应地址区间的类型，1 代表可用 RAM，所有其它的值代表保留区域。</p>
 <p>可以保证所提供的内存分布列出了所有可供正常使用的标准内存。</p>
 <p>如果设置了 flags 的第 7 位，则 drives_* 域是有效的，指出第一个驱动器结构的物理地址和这个结构的大小。drives_addr 是地址，drives_length 是驱动器结构的总大小。注意，drives_length 可以是 0。每个驱动器结构的格式如下：  
 　</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">        +-------------------+</span><br><span class="line">0       | size              |</span><br><span class="line">        +-------------------+</span><br><span class="line">4       | drive_number      |</span><br><span class="line">        +-------------------+</span><br><span class="line">5       | drive_mode        |</span><br><span class="line">        +-------------------+</span><br><span class="line">6       | drive_cylinders   |</span><br><span class="line">8       | drive_heads       |</span><br><span class="line">9       | drive_sectors     |</span><br><span class="line">        +-------------------+</span><br><span class="line">10 - xx | drive_ports       |</span><br><span class="line">        +-------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight gherkin"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">        +-------------------+<br>0       |<span class="hljs-string"> size              </span>|<br>        +-------------------+<br>4       |<span class="hljs-string"> drive_number      </span>|<br>        +-------------------+<br>5       |<span class="hljs-string"> drive_mode        </span>|<br>        +-------------------+<br>6       |<span class="hljs-string"> drive_cylinders   </span>|<br>8       |<span class="hljs-string"> drive_heads       </span>|<br>9       |<span class="hljs-string"> drive_sectors     </span>|<br>        +-------------------+<br>10 - xx |<span class="hljs-string"> drive_ports       </span>|<br>        +-------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>size 域指出了结构的大小。依据端口的数量不同，这个大小可能变化。注意，这个大小可能不等于（10 + 2 * 端口数），这是由于对齐的原因。</p>
 <p>drive_number 域包含 BIOS 驱动器号。drive_mode 域代表了引导程序使用的访问模式。目前，模式定义如下：</p>
@@ -431,7 +608,7 @@
 <p>如果设置了 flags 的第 8 位，则 config_table 域有效，指出由 GET CONFIGURATION BIOS 调用返回的 ROM 配置表的物理地址。如果这个 BIOS 调用失败了，则这个表的大小必须是 0。</p>
 <p>如果设置了 flags 的第 9 位，则 boot_loader_name 域有效，包含了引导程序名字在物理内存中的地址。引导程序名字是正常的 C 风格的以 0 中止的字符串。</p>
 <p>如果设置了 flags 的第 10 位，则 apm_table 域有效，包含了如下 APM 表的物理地址：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">        +----------------------+</span><br><span class="line">0       | version              |</span><br><span class="line">2       | cseg                 |</span><br><span class="line">4       | offset               |</span><br><span class="line">8       | cseg_16              |</span><br><span class="line">10      | dseg                 |</span><br><span class="line">12      | flags                |</span><br><span class="line">14      | cseg_len             |</span><br><span class="line">16      | cseg_16_len          |</span><br><span class="line">18      | dseg_len             |</span><br><span class="line">        +----------------------+</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight gherkin"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">        +----------------------+<br>0       |<span class="hljs-string"> version              </span>|<br>2       |<span class="hljs-string"> cseg                 </span>|<br>4       |<span class="hljs-string"> offset               </span>|<br>8       |<span class="hljs-string"> cseg_16              </span>|<br>10      |<span class="hljs-string"> dseg                 </span>|<br>12      |<span class="hljs-string"> flags                </span>|<br>14      |<span class="hljs-string"> cseg_len             </span>|<br>16      |<span class="hljs-string"> cseg_16_len          </span>|<br>18      |<span class="hljs-string"> dseg_len             </span>|<br>        +----------------------+<br></code></pre></td></tr></tbody></table></figure>
 
 <p>域 version、cseg、offset、cseg_16、dseg、flags、cseg_len、cseg_16_len、dseg_len 分别指出了版本号、保护模式 32 位代码段、入口点的偏移量、保护模式 16 位代码段、保护模式 16 位数据段、标志位、保护模式 32 位代码段的长度、保护模式 16 位代码段的长度和保护模式 16 位数据段的长度。只有 offset 域是 4 字节，其余的域都是 2 字节。参见<a target="_blank" rel="noopener" href="http://www.microsoft.com/hwdev/busbios/amp_12.htm">高级电源管理（APM）BIOS 接口规范</a>。</p>
 <p>如果设置了 flags 的第 11 位，则 graphics table 有效。前提是内核已经在 Multiboot 头中指定了一种图形模式。</p>
@@ -493,19 +670,19 @@
 </ul>
 <h4 id="multiboot-h"><a href="#multiboot-h" class="headerlink" title="multiboot.h"></a>multiboot.h</h4><p>这是 <code>multiboot.h</code> 文件中的源代码：  
 　</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* multiboot.h - Multiboot 的 header */</span></span><br><span class="line"><span class="comment">/* Copyright (C) 1999, 2001  Free Software Foundation, Inc.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This program is free software; you can redistribute it and/or modify</span></span><br><span class="line"><span class="comment">   it under the terms of the GNU General Public License as published by</span></span><br><span class="line"><span class="comment">   the Free Software Foundation; either version 2 of the License, or</span></span><br><span class="line"><span class="comment">   (at your option) any later version.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This program is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></span><br><span class="line"><span class="comment">   GNU General Public License for more details.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   You should have received a copy of the GNU General Public License</span></span><br><span class="line"><span class="comment">   along with this program; if not, write to the Free Software</span></span><br><span class="line"><span class="comment">   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 宏定义。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiboot header 的魔数。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MULTIBOOT_HEADER_MAGIC          0x1BADB002</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiboot header 的标志。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __ELF__</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> MULTIBOOT_HEADER_FLAGS         0x00000003</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> MULTIBOOT_HEADER_FLAGS         0x00010003</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiboot 兼容的引导程序传递来的魔数。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MULTIBOOT_BOOTLOADER_MAGIC      0x2BADB002</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 堆栈大小 (16KB)。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACK_SIZE                      0x4000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* C 符号格式。HAVE_ASM_USCORE 由 configure 定义。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> HAVE_ASM_USCORE</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> EXT_C(sym)                     _ ## sym</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> EXT_C(sym)                     sym</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ASM</span></span><br><span class="line"><span class="comment">/* 不要在 boot.S 中 include 这里。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 类型定义。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiboot header。 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">multiboot_header</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> magic;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> flags;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> checksum;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> header_addr;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> load_addr;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> load_end_addr;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> bss_end_addr;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> entry_addr;</span><br><span class="line">} <span class="keyword">multiboot_header_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* a.out 符号表。 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">aout_symbol_table</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> tabsize;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> strsize;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> addr;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> reserved;</span><br><span class="line">} <span class="keyword">aout_symbol_table_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ELF 的 section header table。 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">elf_section_header_table</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> num;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> addr;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> shndx;</span><br><span class="line">} <span class="keyword">elf_section_header_table_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiboot 信息。 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">multiboot_info</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> flags;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mem_lower;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mem_upper;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> boot_device;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> cmdline;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mods_count;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mods_addr;</span><br><span class="line">  <span class="class"><span class="keyword">union</span></span></span><br><span class="line"><span class="class">  {</span></span><br><span class="line">    <span class="keyword">aout_symbol_table_t</span> aout_sym;</span><br><span class="line">    <span class="keyword">elf_section_header_table_t</span> elf_sec;</span><br><span class="line">  } u;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mmap_length;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mmap_addr;</span><br><span class="line">} <span class="keyword">multiboot_info_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 模块结构。 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">module</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mod_start;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> mod_end;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> reserved;</span><br><span class="line">} <span class="keyword">module_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 内存分布。小心，偏移量 0 是 base_addr_low 而不是 size 。 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">memory_map</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> size;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> base_addr_low;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> base_addr_high;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> length_low;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> length_high;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> type;</span><br><span class="line">} <span class="keyword">memory_map_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* ! ASM */</span></span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/* multiboot.h - Multiboot 的 header */</span><br><span class="hljs-comment">/* Copyright (C) 1999, 2001  Free Software Foundation, Inc.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">   This program is free software; you can redistribute it and/or modify</span><br><span class="hljs-comment">   it under the terms of the GNU General Public License as published by</span><br><span class="hljs-comment">   the Free Software Foundation; either version 2 of the License, or</span><br><span class="hljs-comment">   (at your option) any later version.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">   This program is distributed in the hope that it will be useful,</span><br><span class="hljs-comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span><br><span class="hljs-comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span><br><span class="hljs-comment">   GNU General Public License for more details.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">   You should have received a copy of the GNU General Public License</span><br><span class="hljs-comment">   along with this program; if not, write to the Free Software</span><br><span class="hljs-comment">   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */</span><br><br><span class="hljs-comment">/* 宏定义。 */</span><br><br><span class="hljs-comment">/* Multiboot header 的魔数。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MULTIBOOT_HEADER_MAGIC          0x1BADB002</span><br><br><span class="hljs-comment">/* Multiboot header 的标志。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> __ELF__</span><br><span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MULTIBOOT_HEADER_FLAGS         0x00000003</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br><span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> MULTIBOOT_HEADER_FLAGS         0x00010003</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br><span class="hljs-comment">/* Multiboot 兼容的引导程序传递来的魔数。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MULTIBOOT_BOOTLOADER_MAGIC      0x2BADB002</span><br><br><span class="hljs-comment">/* 堆栈大小 (16KB)。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STACK_SIZE                      0x4000</span><br><br><span class="hljs-comment">/* C 符号格式。HAVE_ASM_USCORE 由 configure 定义。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> HAVE_ASM_USCORE</span><br><span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> EXT_C(sym)                     _ ## sym</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br><span class="hljs-meta"># <span class="hljs-meta-keyword">define</span> EXT_C(sym)                     sym</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ASM</span><br><span class="hljs-comment">/* 不要在 boot.S 中 include 这里。 */</span><br><br><span class="hljs-comment">/* 类型定义。 */</span><br><br><span class="hljs-comment">/* Multiboot header。 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">multiboot_header</span></span><br><span class="hljs-class">{</span><br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> magic;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> flags;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> checksum;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> header_addr;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> load_addr;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> load_end_addr;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> bss_end_addr;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> entry_addr;<br>} <span class="hljs-keyword">multiboot_header_t</span>;<br><br><span class="hljs-comment">/* a.out 符号表。 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">aout_symbol_table</span></span><br><span class="hljs-class">{</span><br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> tabsize;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> strsize;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> addr;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> reserved;<br>} <span class="hljs-keyword">aout_symbol_table_t</span>;<br><br><span class="hljs-comment">/* ELF 的 section header table。 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">elf_section_header_table</span></span><br><span class="hljs-class">{</span><br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> num;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> size;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> addr;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> shndx;<br>} <span class="hljs-keyword">elf_section_header_table_t</span>;<br><br><span class="hljs-comment">/* Multiboot 信息。 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">multiboot_info</span></span><br><span class="hljs-class">{</span><br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> flags;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mem_lower;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mem_upper;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> boot_device;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> cmdline;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mods_count;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mods_addr;<br>  <span class="hljs-class"><span class="hljs-keyword">union</span></span><br><span class="hljs-class">  {</span><br>    <span class="hljs-keyword">aout_symbol_table_t</span> aout_sym;<br>    <span class="hljs-keyword">elf_section_header_table_t</span> elf_sec;<br>  } u;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mmap_length;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mmap_addr;<br>} <span class="hljs-keyword">multiboot_info_t</span>;<br><br><span class="hljs-comment">/* 模块结构。 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">module</span></span><br><span class="hljs-class">{</span><br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mod_start;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> mod_end;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-built_in">string</span>;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> reserved;<br>} <span class="hljs-keyword">module_t</span>;<br><br><span class="hljs-comment">/* 内存分布。小心，偏移量 0 是 base_addr_low 而不是 size 。 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">memory_map</span></span><br><span class="hljs-class">{</span><br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> size;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> base_addr_low;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> base_addr_high;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> length_low;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> length_high;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> type;<br>} <span class="hljs-keyword">memory_map_t</span>;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">/* ! ASM */</span></span><br></code></pre></td></tr></tbody></table></figure>
 
 
 
 <h4 id="boot-S"><a href="#boot-S" class="headerlink" title="boot.S"></a>boot.S</h4><p>文件 <code>boot.S</code> 的内容是：  
 　</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">/* boot.S - 引导内核 */</span><br><span class="line">/* Copyright (C) 1999, 2001  Free Software Foundation, Inc.</span><br><span class="line"></span><br><span class="line">   This program is free software; you can redistribute it and/or modify</span><br><span class="line">   it under the terms of the GNU General Public License as published by</span><br><span class="line">   the Free Software Foundation; either version 2 of the License, or</span><br><span class="line">   (at your option) any later version.</span><br><span class="line"></span><br><span class="line">   This program is distributed in the hope that it will be useful,</span><br><span class="line">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span><br><span class="line">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span><br><span class="line">   GNU General Public License for more details.</span><br><span class="line"></span><br><span class="line">   You should have received a copy of the GNU General Public License</span><br><span class="line">   along with this program; if not, write to the Free Software</span><br><span class="line">   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */</span><br><span class="line"></span><br><span class="line">#define ASM     1</span><br><span class="line">#include &lt;multiboot.h&gt;</span><br><span class="line"></span><br><span class="line">        .text</span><br><span class="line"></span><br><span class="line">        .globl  start, _start</span><br><span class="line">start:</span><br><span class="line">_start:</span><br><span class="line">        jmp     multiboot_entry</span><br><span class="line"></span><br><span class="line">        /* 32 位对齐。 */</span><br><span class="line">        .align  4</span><br><span class="line"></span><br><span class="line">        /* Multiboot header。 */</span><br><span class="line">multiboot_header:</span><br><span class="line">        /* magic */</span><br><span class="line">        .long   MULTIBOOT_HEADER_MAGIC</span><br><span class="line">        /* flags */</span><br><span class="line">        .long   MULTIBOOT_HEADER_FLAGS</span><br><span class="line">        /* checksum */</span><br><span class="line">        .long   -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)</span><br><span class="line">#ifndef __ELF__</span><br><span class="line">        /* header_addr */</span><br><span class="line">        .long   multiboot_header</span><br><span class="line">        /* load_addr */</span><br><span class="line">        .long   _start</span><br><span class="line">        /* load_end_addr */</span><br><span class="line">        .long   _edata</span><br><span class="line">        /* bss_end_addr */</span><br><span class="line">        .long   _end</span><br><span class="line">        /* entry_addr */</span><br><span class="line">        .long   multiboot_entry</span><br><span class="line">#endif /* ! __ELF__ */</span><br><span class="line"></span><br><span class="line">multiboot_entry:</span><br><span class="line">        /* 初始化堆栈指针。 */</span><br><span class="line">        movl    $(stack + STACK_SIZE), %esp</span><br><span class="line"></span><br><span class="line">        /* 重置 EFLAGS。 */</span><br><span class="line">        pushl   $0</span><br><span class="line">        popf</span><br><span class="line"></span><br><span class="line">        /* 将指向 Multiboot 信息结构的指针入栈。 */</span><br><span class="line">        pushl   %ebx</span><br><span class="line">        /* 将魔数入栈。 */</span><br><span class="line">        pushl   %eax</span><br><span class="line"></span><br><span class="line">        /* 现在进入 C main 函数... */</span><br><span class="line">        call    EXT_C(cmain)</span><br><span class="line"></span><br><span class="line">        /* 停机。 */</span><br><span class="line">        pushl   $halt_message</span><br><span class="line">        call    EXT_C(printf)</span><br><span class="line"></span><br><span class="line">loop:   hlt</span><br><span class="line">        jmp     loop</span><br><span class="line"></span><br><span class="line">halt_message:</span><br><span class="line">        .asciz  "Halted."</span><br><span class="line"></span><br><span class="line">        /* 我们的堆栈区。 */</span><br><span class="line">        .comm   stack, STACK_SIZE</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs assembly">/* boot.S - 引导内核 */<br>/* Copyright (C) 1999, 2001  Free Software Foundation, Inc.<br><br>   This program is free software; you can redistribute it and/or modify<br>   it under the terms of the GNU General Public License as published by<br>   the Free Software Foundation; either version 2 of the License, or<br>   (at your option) any later version.<br><br>   This program is distributed in the hope that it will be useful,<br>   but WITHOUT ANY WARRANTY; without even the implied warranty of<br>   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>   GNU General Public License for more details.<br><br>   You should have received a copy of the GNU General Public License<br>   along with this program; if not, write to the Free Software<br>   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */<br><br>#define ASM     1<br>#include &lt;multiboot.h&gt;<br><br>        .text<br><br>        .globl  start, _start<br>start:<br>_start:<br>        jmp     multiboot_entry<br><br>        /* 32 位对齐。 */<br>        .align  4<br><br>        /* Multiboot header。 */<br>multiboot_header:<br>        /* magic */<br>        .long   MULTIBOOT_HEADER_MAGIC<br>        /* flags */<br>        .long   MULTIBOOT_HEADER_FLAGS<br>        /* checksum */<br>        .long   -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)<br>#ifndef __ELF__<br>        /* header_addr */<br>        .long   multiboot_header<br>        /* load_addr */<br>        .long   _start<br>        /* load_end_addr */<br>        .long   _edata<br>        /* bss_end_addr */<br>        .long   _end<br>        /* entry_addr */<br>        .long   multiboot_entry<br>#endif /* ! __ELF__ */<br><br>multiboot_entry:<br>        /* 初始化堆栈指针。 */<br>        movl    $(stack + STACK_SIZE), %esp<br><br>        /* 重置 EFLAGS。 */<br>        pushl   $0<br>        popf<br><br>        /* 将指向 Multiboot 信息结构的指针入栈。 */<br>        pushl   %ebx<br>        /* 将魔数入栈。 */<br>        pushl   %eax<br><br>        /* 现在进入 C main 函数... */<br>        call    EXT_C(cmain)<br><br>        /* 停机。 */<br>        pushl   $halt_message<br>        call    EXT_C(printf)<br><br>loop:   hlt<br>        jmp     loop<br><br>halt_message:<br>        .asciz  "Halted."<br><br>        /* 我们的堆栈区。 */<br>        .comm   stack, STACK_SIZE<br></code></pre></td></tr></tbody></table></figure>
 
 
 
 <h4 id="kernel-c"><a href="#kernel-c" class="headerlink" title="kernel.c"></a>kernel.c</h4><p>文件 <code>kernel.c</code> 中的内容：  
 　</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* kernel.c - 内核的 C 语言部分 */</span></span><br><span class="line"><span class="comment">/* Copyright (C) 1999  Free Software Foundation, Inc.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This program is free software; you can redistribute it and/or modify</span></span><br><span class="line"><span class="comment">   it under the terms of the GNU General Public License as published by</span></span><br><span class="line"><span class="comment">   the Free Software Foundation; either version 2 of the License, or</span></span><br><span class="line"><span class="comment">   (at your option) any later version.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   This program is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></span><br><span class="line"><span class="comment">   GNU General Public License for more details.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   You should have received a copy of the GNU General Public License</span></span><br><span class="line"><span class="comment">   along with this program; if not, write to the Free Software</span></span><br><span class="line"><span class="comment">   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;multiboot.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 宏定义。 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 检测 FLAGS 中的位 BIT 是否被置位。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHECK_FLAG(flags,bit)   ((flags) &amp; (1 &lt;&lt; (bit)))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 与显示相关的设置。 */</span></span><br><span class="line"><span class="comment">/* 列数。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLUMNS                 80</span></span><br><span class="line"><span class="comment">/* 行数。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LINES                   24</span></span><br><span class="line"><span class="comment">/* 字符属性。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ATTRIBUTE               7</span></span><br><span class="line"><span class="comment">/* 显存地址。 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VIDEO                   0xB8000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 变量。 */</span></span><br><span class="line"><span class="comment">/* X 坐标。 */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> xpos;</span><br><span class="line"><span class="comment">/* Y 坐标。 */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> ypos;</span><br><span class="line"><span class="comment">/* 指向显存。 */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *video;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 前导声明。 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cmain</span> <span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> magic, <span class="keyword">unsigned</span> <span class="keyword">long</span> addr)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cls</span> <span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">itoa</span> <span class="params">(<span class="keyword">char</span> *buf, <span class="keyword">int</span> base, <span class="keyword">int</span> d)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">putchar</span> <span class="params">(<span class="keyword">int</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printf</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *format, ...)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 检查 MAGIC 是否有效并打印 ADDR 指向的 Multiboot 信息结构。 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">cmain</span> <span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> magic, <span class="keyword">unsigned</span> <span class="keyword">long</span> addr)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="keyword">multiboot_info_t</span> *mbi;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 清屏。 */</span></span><br><span class="line">  cls ();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 引导装载器是否符合 Multiboot 规范？ */</span></span><br><span class="line">  <span class="keyword">if</span> (magic != MULTIBOOT_BOOTLOADER_MAGIC)</span><br><span class="line">    {</span><br><span class="line">      <span class="built_in">printf</span> (<span class="string">"Invalid magic number: 0x%x/n"</span>, (<span class="keyword">unsigned</span>) magic);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 将 MBI 指向 Multiboot 信息结构。 */</span></span><br><span class="line">  mbi = (<span class="keyword">multiboot_info_t</span> *) addr;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 输出标志。 */</span></span><br><span class="line">  <span class="built_in">printf</span> (<span class="string">"flags = 0x%x/n"</span>, (<span class="keyword">unsigned</span>) mbi-&gt;flags);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* mem_* 是否有效？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">0</span>))</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"mem_lower = %uKB, mem_upper = %uKB/n"</span>,</span><br><span class="line">            (<span class="keyword">unsigned</span>) mbi-&gt;mem_lower, (<span class="keyword">unsigned</span>) mbi-&gt;mem_upper);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* boot_device 是否有效？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">1</span>))</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"boot_device = 0x%x/n"</span>, (<span class="keyword">unsigned</span>) mbi-&gt;boot_device);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 是否有命令行参数？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">2</span>))</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"cmdline = %s/n"</span>, (<span class="keyword">char</span> *) mbi-&gt;cmdline);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* mods_* 是否有效？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">3</span>))</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">module_t</span> *mod;</span><br><span class="line">      <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">printf</span> (<span class="string">"mods_count = %d, mods_addr = 0x%x/n"</span>,</span><br><span class="line">              (<span class="keyword">int</span>) mbi-&gt;mods_count, (<span class="keyword">int</span>) mbi-&gt;mods_addr);</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>, mod = (<span class="keyword">module_t</span> *) mbi-&gt;mods_addr;</span><br><span class="line">           i &lt; mbi-&gt;mods_count;</span><br><span class="line">           i++, mod += <span class="keyword">sizeof</span> (<span class="keyword">module_t</span>))</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">" mod_start = 0x%x, mod_end = 0x%x, string = %s/n"</span>,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mod-&gt;mod_start,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mod-&gt;mod_end,</span><br><span class="line">                (<span class="keyword">char</span> *) mod-&gt;<span class="built_in">string</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 第 4 位和第 5 位是互斥的！ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">4</span>) &amp;&amp; CHECK_FLAG (mbi-&gt;flags, <span class="number">5</span>))</span><br><span class="line">    {</span><br><span class="line">      <span class="built_in">printf</span> (<span class="string">"Both bits 4 and 5 are set./n"</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 是否有 a.out 符号表？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">4</span>))</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">aout_symbol_table_t</span> *aout_sym = &amp;(mbi-&gt;u.aout_sym);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">printf</span> (<span class="string">"aout_symbol_table: tabsize = 0x%0x, "</span></span><br><span class="line">              <span class="string">"strsize = 0x%x, addr = 0x%x/n"</span>,</span><br><span class="line">              (<span class="keyword">unsigned</span>) aout_sym-&gt;tabsize,</span><br><span class="line">              (<span class="keyword">unsigned</span>) aout_sym-&gt;strsize,</span><br><span class="line">              (<span class="keyword">unsigned</span>) aout_sym-&gt;addr);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 是否有 ELF section header table？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">5</span>))</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">elf_section_header_table_t</span> *elf_sec = &amp;(mbi-&gt;u.elf_sec);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">printf</span> (<span class="string">"elf_sec: num = %u, size = 0x%x,"</span></span><br><span class="line">              <span class="string">" addr = 0x%x, shndx = 0x%x/n"</span>,</span><br><span class="line">              (<span class="keyword">unsigned</span>) elf_sec-&gt;num, (<span class="keyword">unsigned</span>) elf_sec-&gt;size,</span><br><span class="line">              (<span class="keyword">unsigned</span>) elf_sec-&gt;addr, (<span class="keyword">unsigned</span>) elf_sec-&gt;shndx);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* mmap_* 是否有效？ */</span></span><br><span class="line">  <span class="keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="number">6</span>))</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">memory_map_t</span> *mmap;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">printf</span> (<span class="string">"mmap_addr = 0x%x, mmap_length = 0x%x/n"</span>,</span><br><span class="line">              (<span class="keyword">unsigned</span>) mbi-&gt;mmap_addr, (<span class="keyword">unsigned</span>) mbi-&gt;mmap_length);</span><br><span class="line">      <span class="keyword">for</span> (mmap = (<span class="keyword">memory_map_t</span> *) mbi-&gt;mmap_addr;</span><br><span class="line">           (<span class="keyword">unsigned</span> <span class="keyword">long</span>) mmap &lt; mbi-&gt;mmap_addr + mbi-&gt;mmap_length;</span><br><span class="line">           mmap = (<span class="keyword">memory_map_t</span> *) ((<span class="keyword">unsigned</span> <span class="keyword">long</span>) mmap</span><br><span class="line">                                    + mmap-&gt;size + <span class="keyword">sizeof</span> (mmap-&gt;size)))</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">" size = 0x%x, base_addr = 0x%x%x,"</span></span><br><span class="line">                <span class="string">" length = 0x%x%x, type = 0x%x/n"</span>,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mmap-&gt;size,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mmap-&gt;base_addr_high,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mmap-&gt;base_addr_low,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mmap-&gt;length_high,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mmap-&gt;length_low,</span><br><span class="line">                (<span class="keyword">unsigned</span>) mmap-&gt;type);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 清屏并初始化 VIDEO，XPOS 和 YPOS。 */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">cls</span> <span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">  video = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *) VIDEO;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; COLUMNS * LINES * <span class="number">2</span>; i++)</span><br><span class="line">    *(video + i) = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  xpos = <span class="number">0</span>;</span><br><span class="line">  ypos = <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 将整数 D 转换为字符串并保存在 BUF 中。如果 BASE 为 'd'，则 D 为十进制，如果 BASE 为 'x'，则 D 为十六进制。 */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">itoa</span> <span class="params">(<span class="keyword">char</span> *buf, <span class="keyword">int</span> base, <span class="keyword">int</span> d)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="keyword">char</span> *p = buf;</span><br><span class="line">  <span class="keyword">char</span> *p1, *p2;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> ud = d;</span><br><span class="line">  <span class="keyword">int</span> divisor = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 如果指定了 %d 并且 D 是负数，在开始添上负号。 */</span></span><br><span class="line">  <span class="keyword">if</span> (base == <span class="string">'d'</span> &amp;&amp; d &lt; <span class="number">0</span>)</span><br><span class="line">    {</span><br><span class="line">      *p++ = <span class="string">'-'</span>;</span><br><span class="line">      buf++;</span><br><span class="line">      ud = -d;</span><br><span class="line">    }</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (base == <span class="string">'x'</span>)</span><br><span class="line">    divisor = <span class="number">16</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 用 DIVISOR 去除 UD 直到 UD == 0。 */</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">int</span> remainder = ud % divisor;</span><br><span class="line"></span><br><span class="line">      *p++ = (remainder &lt; <span class="number">10</span>) ? remainder + <span class="string">'0'</span> : remainder + <span class="string">'a'</span> - <span class="number">10</span>;</span><br><span class="line">    }</span><br><span class="line">  <span class="keyword">while</span> (ud /= divisor);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 在字符串尾添上终结符。 */</span></span><br><span class="line">  *p = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 反转 BUF。 */</span></span><br><span class="line">  p1 = buf;</span><br><span class="line">  p2 = p - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (p1 &lt; p2)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">char</span> tmp = *p1;</span><br><span class="line">      *p1 = *p2;</span><br><span class="line">      *p2 = tmp;</span><br><span class="line">      p1++;</span><br><span class="line">      p2--;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 在屏幕上输出字符 C 。 */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">putchar</span> <span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">'/n'</span> || c == <span class="string">'/r'</span>)</span><br><span class="line">    {</span><br><span class="line">    newline:</span><br><span class="line">      xpos = <span class="number">0</span>;</span><br><span class="line">      ypos++;</span><br><span class="line">      <span class="keyword">if</span> (ypos &gt;= LINES)</span><br><span class="line">        ypos = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  *(video + (xpos + ypos * COLUMNS) * <span class="number">2</span>) = c &amp; <span class="number">0xFF</span>;</span><br><span class="line">  *(video + (xpos + ypos * COLUMNS) * <span class="number">2</span> + <span class="number">1</span>) = ATTRIBUTE;</span><br><span class="line"></span><br><span class="line">  xpos++;</span><br><span class="line">  <span class="keyword">if</span> (xpos &gt;= COLUMNS)</span><br><span class="line">    <span class="keyword">goto</span> newline;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 格式化字符串并在屏幕上输出，就像 libc 函数 printf 一样。 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span></span></span><br><span class="line"><span class="function"><span class="title">printf</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *format, ...)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="keyword">char</span> **arg = (<span class="keyword">char</span> **) &amp;format;</span><br><span class="line">  <span class="keyword">int</span> c;</span><br><span class="line">  <span class="keyword">char</span> buf[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">  arg++;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> ((c = *format++) != <span class="number">0</span>)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> (c != <span class="string">'%'</span>)</span><br><span class="line">        <span class="built_in">putchar</span> (c);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">char</span> *p;</span><br><span class="line"></span><br><span class="line">          c = *format++;</span><br><span class="line">          <span class="keyword">switch</span> (c)</span><br><span class="line">            {</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'d'</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'u'</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'x'</span>:</span><br><span class="line">              itoa (buf, c, *((<span class="keyword">int</span> *) arg++));</span><br><span class="line">              p = buf;</span><br><span class="line">              <span class="keyword">goto</span> <span class="built_in">string</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="string">'s'</span>:</span><br><span class="line">              p = *arg++;</span><br><span class="line">              <span class="keyword">if</span> (! p)</span><br><span class="line">                p = <span class="string">"(null)"</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">string</span>:</span><br><span class="line">              <span class="keyword">while</span> (*p)</span><br><span class="line">                <span class="built_in">putchar</span> (*p++);</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">              <span class="built_in">putchar</span> (*((<span class="keyword">int</span> *) arg++));</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/* kernel.c - 内核的 C 语言部分 */</span><br><span class="hljs-comment">/* Copyright (C) 1999  Free Software Foundation, Inc.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">   This program is free software; you can redistribute it and/or modify</span><br><span class="hljs-comment">   it under the terms of the GNU General Public License as published by</span><br><span class="hljs-comment">   the Free Software Foundation; either version 2 of the License, or</span><br><span class="hljs-comment">   (at your option) any later version.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">   This program is distributed in the hope that it will be useful,</span><br><span class="hljs-comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span><br><span class="hljs-comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span><br><span class="hljs-comment">   GNU General Public License for more details.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">   You should have received a copy of the GNU General Public License</span><br><span class="hljs-comment">   along with this program; if not, write to the Free Software</span><br><span class="hljs-comment">   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;multiboot.h&gt;</span></span><br><br><span class="hljs-comment">/* 宏定义。 */</span><br><br><span class="hljs-comment">/* 检测 FLAGS 中的位 BIT 是否被置位。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CHECK_FLAG(flags,bit)   ((flags) &amp; (1 &lt;&lt; (bit)))</span><br><br><span class="hljs-comment">/* 与显示相关的设置。 */</span><br><span class="hljs-comment">/* 列数。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> COLUMNS                 80</span><br><span class="hljs-comment">/* 行数。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LINES                   24</span><br><span class="hljs-comment">/* 字符属性。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ATTRIBUTE               7</span><br><span class="hljs-comment">/* 显存地址。 */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VIDEO                   0xB8000</span><br><br><span class="hljs-comment">/* 变量。 */</span><br><span class="hljs-comment">/* X 坐标。 */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> xpos;<br><span class="hljs-comment">/* Y 坐标。 */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> ypos;<br><span class="hljs-comment">/* 指向显存。 */</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *video;<br><br><span class="hljs-comment">/* 前导声明。 */</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">cmain</span> <span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> magic, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> addr)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">cls</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">itoa</span> <span class="hljs-params">(<span class="hljs-keyword">char</span> *buf, <span class="hljs-keyword">int</span> base, <span class="hljs-keyword">int</span> d)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">putchar</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> c)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printf</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format, ...)</span></span>;<br><br><span class="hljs-comment">/* 检查 MAGIC 是否有效并打印 ADDR 指向的 Multiboot 信息结构。 */</span><br><span class="hljs-function"><span class="hljs-keyword">void</span></span><br><span class="hljs-function"><span class="hljs-title">cmain</span> <span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> magic, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> addr)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-keyword">multiboot_info_t</span> *mbi;<br><br>  <span class="hljs-comment">/* 清屏。 */</span><br>  cls ();<br><br>  <span class="hljs-comment">/* 引导装载器是否符合 Multiboot 规范？ */</span><br>  <span class="hljs-keyword">if</span> (magic != MULTIBOOT_BOOTLOADER_MAGIC)<br>    {<br>      <span class="hljs-built_in">printf</span> (<span class="hljs-string">"Invalid magic number: 0x%x/n"</span>, (<span class="hljs-keyword">unsigned</span>) magic);<br>      <span class="hljs-keyword">return</span>;<br>    }<br><br>  <span class="hljs-comment">/* 将 MBI 指向 Multiboot 信息结构。 */</span><br>  mbi = (<span class="hljs-keyword">multiboot_info_t</span> *) addr;<br><br>  <span class="hljs-comment">/* 输出标志。 */</span><br>  <span class="hljs-built_in">printf</span> (<span class="hljs-string">"flags = 0x%x/n"</span>, (<span class="hljs-keyword">unsigned</span>) mbi-&gt;flags);<br><br>  <span class="hljs-comment">/* mem_* 是否有效？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">0</span>))<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">"mem_lower = %uKB, mem_upper = %uKB/n"</span>,<br>            (<span class="hljs-keyword">unsigned</span>) mbi-&gt;mem_lower, (<span class="hljs-keyword">unsigned</span>) mbi-&gt;mem_upper);<br><br>  <span class="hljs-comment">/* boot_device 是否有效？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">1</span>))<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">"boot_device = 0x%x/n"</span>, (<span class="hljs-keyword">unsigned</span>) mbi-&gt;boot_device);<br><br>  <span class="hljs-comment">/* 是否有命令行参数？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">2</span>))<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">"cmdline = %s/n"</span>, (<span class="hljs-keyword">char</span> *) mbi-&gt;cmdline);<br><br>  <span class="hljs-comment">/* mods_* 是否有效？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">3</span>))<br>    {<br>      <span class="hljs-keyword">module_t</span> *mod;<br>      <span class="hljs-keyword">int</span> i;<br><br>      <span class="hljs-built_in">printf</span> (<span class="hljs-string">"mods_count = %d, mods_addr = 0x%x/n"</span>,<br>              (<span class="hljs-keyword">int</span>) mbi-&gt;mods_count, (<span class="hljs-keyword">int</span>) mbi-&gt;mods_addr);<br>      <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>, mod = (<span class="hljs-keyword">module_t</span> *) mbi-&gt;mods_addr;<br>           i &lt; mbi-&gt;mods_count;<br>           i++, mod += <span class="hljs-keyword">sizeof</span> (<span class="hljs-keyword">module_t</span>))<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">" mod_start = 0x%x, mod_end = 0x%x, string = %s/n"</span>,<br>                (<span class="hljs-keyword">unsigned</span>) mod-&gt;mod_start,<br>                (<span class="hljs-keyword">unsigned</span>) mod-&gt;mod_end,<br>                (<span class="hljs-keyword">char</span> *) mod-&gt;<span class="hljs-built_in">string</span>);<br>    }<br><br>  <span class="hljs-comment">/* 第 4 位和第 5 位是互斥的！ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">4</span>) &amp;&amp; CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">5</span>))<br>    {<br>      <span class="hljs-built_in">printf</span> (<span class="hljs-string">"Both bits 4 and 5 are set./n"</span>);<br>      <span class="hljs-keyword">return</span>;<br>    }<br><br>  <span class="hljs-comment">/* 是否有 a.out 符号表？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">4</span>))<br>    {<br>      <span class="hljs-keyword">aout_symbol_table_t</span> *aout_sym = &amp;(mbi-&gt;u.aout_sym);<br><br>      <span class="hljs-built_in">printf</span> (<span class="hljs-string">"aout_symbol_table: tabsize = 0x%0x, "</span><br>              <span class="hljs-string">"strsize = 0x%x, addr = 0x%x/n"</span>,<br>              (<span class="hljs-keyword">unsigned</span>) aout_sym-&gt;tabsize,<br>              (<span class="hljs-keyword">unsigned</span>) aout_sym-&gt;strsize,<br>              (<span class="hljs-keyword">unsigned</span>) aout_sym-&gt;addr);<br>    }<br><br>  <span class="hljs-comment">/* 是否有 ELF section header table？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">5</span>))<br>    {<br>      <span class="hljs-keyword">elf_section_header_table_t</span> *elf_sec = &amp;(mbi-&gt;u.elf_sec);<br><br>      <span class="hljs-built_in">printf</span> (<span class="hljs-string">"elf_sec: num = %u, size = 0x%x,"</span><br>              <span class="hljs-string">" addr = 0x%x, shndx = 0x%x/n"</span>,<br>              (<span class="hljs-keyword">unsigned</span>) elf_sec-&gt;num, (<span class="hljs-keyword">unsigned</span>) elf_sec-&gt;size,<br>              (<span class="hljs-keyword">unsigned</span>) elf_sec-&gt;addr, (<span class="hljs-keyword">unsigned</span>) elf_sec-&gt;shndx);<br>    }<br><br>  <span class="hljs-comment">/* mmap_* 是否有效？ */</span><br>  <span class="hljs-keyword">if</span> (CHECK_FLAG (mbi-&gt;flags, <span class="hljs-number">6</span>))<br>    {<br>      <span class="hljs-keyword">memory_map_t</span> *mmap;<br><br>      <span class="hljs-built_in">printf</span> (<span class="hljs-string">"mmap_addr = 0x%x, mmap_length = 0x%x/n"</span>,<br>              (<span class="hljs-keyword">unsigned</span>) mbi-&gt;mmap_addr, (<span class="hljs-keyword">unsigned</span>) mbi-&gt;mmap_length);<br>      <span class="hljs-keyword">for</span> (mmap = (<span class="hljs-keyword">memory_map_t</span> *) mbi-&gt;mmap_addr;<br>           (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>) mmap &lt; mbi-&gt;mmap_addr + mbi-&gt;mmap_length;<br>           mmap = (<span class="hljs-keyword">memory_map_t</span> *) ((<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>) mmap<br>                                    + mmap-&gt;size + <span class="hljs-keyword">sizeof</span> (mmap-&gt;size)))<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">" size = 0x%x, base_addr = 0x%x%x,"</span><br>                <span class="hljs-string">" length = 0x%x%x, type = 0x%x/n"</span>,<br>                (<span class="hljs-keyword">unsigned</span>) mmap-&gt;size,<br>                (<span class="hljs-keyword">unsigned</span>) mmap-&gt;base_addr_high,<br>                (<span class="hljs-keyword">unsigned</span>) mmap-&gt;base_addr_low,<br>                (<span class="hljs-keyword">unsigned</span>) mmap-&gt;length_high,<br>                (<span class="hljs-keyword">unsigned</span>) mmap-&gt;length_low,<br>                (<span class="hljs-keyword">unsigned</span>) mmap-&gt;type);<br>    }<br>}<br><br><span class="hljs-comment">/* 清屏并初始化 VIDEO，XPOS 和 YPOS。 */</span><br><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span></span><br><span class="hljs-function"><span class="hljs-title">cls</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-keyword">int</span> i;<br><br>  video = (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *) VIDEO;<br><br>  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; COLUMNS * LINES * <span class="hljs-number">2</span>; i++)<br>    *(video + i) = <span class="hljs-number">0</span>;<br><br>  xpos = <span class="hljs-number">0</span>;<br>  ypos = <span class="hljs-number">0</span>;<br>}<br><br><span class="hljs-comment">/* 将整数 D 转换为字符串并保存在 BUF 中。如果 BASE 为 'd'，则 D 为十进制，如果 BASE 为 'x'，则 D 为十六进制。 */</span><br><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span></span><br><span class="hljs-function"><span class="hljs-title">itoa</span> <span class="hljs-params">(<span class="hljs-keyword">char</span> *buf, <span class="hljs-keyword">int</span> base, <span class="hljs-keyword">int</span> d)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-keyword">char</span> *p = buf;<br>  <span class="hljs-keyword">char</span> *p1, *p2;<br>  <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> ud = d;<br>  <span class="hljs-keyword">int</span> divisor = <span class="hljs-number">10</span>;<br><br>  <span class="hljs-comment">/* 如果指定了 %d 并且 D 是负数，在开始添上负号。 */</span><br>  <span class="hljs-keyword">if</span> (base == <span class="hljs-string">'d'</span> &amp;&amp; d &lt; <span class="hljs-number">0</span>)<br>    {<br>      *p++ = <span class="hljs-string">'-'</span>;<br>      buf++;<br>      ud = -d;<br>    }<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (base == <span class="hljs-string">'x'</span>)<br>    divisor = <span class="hljs-number">16</span>;<br><br>  <span class="hljs-comment">/* 用 DIVISOR 去除 UD 直到 UD == 0。 */</span><br>  <span class="hljs-keyword">do</span><br>    {<br>      <span class="hljs-keyword">int</span> remainder = ud % divisor;<br><br>      *p++ = (remainder &lt; <span class="hljs-number">10</span>) ? remainder + <span class="hljs-string">'0'</span> : remainder + <span class="hljs-string">'a'</span> - <span class="hljs-number">10</span>;<br>    }<br>  <span class="hljs-keyword">while</span> (ud /= divisor);<br><br>  <span class="hljs-comment">/* 在字符串尾添上终结符。 */</span><br>  *p = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-comment">/* 反转 BUF。 */</span><br>  p1 = buf;<br>  p2 = p - <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (p1 &lt; p2)<br>    {<br>      <span class="hljs-keyword">char</span> tmp = *p1;<br>      *p1 = *p2;<br>      *p2 = tmp;<br>      p1++;<br>      p2--;<br>    }<br>}<br><br><span class="hljs-comment">/* 在屏幕上输出字符 C 。 */</span><br><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span></span><br><span class="hljs-function"><span class="hljs-title">putchar</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> c)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'/n'</span> || c == <span class="hljs-string">'/r'</span>)<br>    {<br>    newline:<br>      xpos = <span class="hljs-number">0</span>;<br>      ypos++;<br>      <span class="hljs-keyword">if</span> (ypos &gt;= LINES)<br>        ypos = <span class="hljs-number">0</span>;<br>      <span class="hljs-keyword">return</span>;<br>    }<br><br>  *(video + (xpos + ypos * COLUMNS) * <span class="hljs-number">2</span>) = c &amp; <span class="hljs-number">0xFF</span>;<br>  *(video + (xpos + ypos * COLUMNS) * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) = ATTRIBUTE;<br><br>  xpos++;<br>  <span class="hljs-keyword">if</span> (xpos &gt;= COLUMNS)<br>    <span class="hljs-keyword">goto</span> newline;<br>}<br><br><span class="hljs-comment">/* 格式化字符串并在屏幕上输出，就像 libc 函数 printf 一样。 */</span><br><span class="hljs-function"><span class="hljs-keyword">void</span></span><br><span class="hljs-function"><span class="hljs-title">printf</span> <span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format, ...)</span></span><br><span class="hljs-function"></span>{<br>  <span class="hljs-keyword">char</span> **arg = (<span class="hljs-keyword">char</span> **) &amp;format;<br>  <span class="hljs-keyword">int</span> c;<br>  <span class="hljs-keyword">char</span> buf[<span class="hljs-number">20</span>];<br><br>  arg++;<br><br>  <span class="hljs-keyword">while</span> ((c = *format++) != <span class="hljs-number">0</span>)<br>    {<br>      <span class="hljs-keyword">if</span> (c != <span class="hljs-string">'%'</span>)<br>        <span class="hljs-built_in">putchar</span> (c);<br>      <span class="hljs-keyword">else</span><br>        {<br>          <span class="hljs-keyword">char</span> *p;<br><br>          c = *format++;<br>          <span class="hljs-keyword">switch</span> (c)<br>            {<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">'d'</span>:<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">'u'</span>:<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">'x'</span>:<br>              itoa (buf, c, *((<span class="hljs-keyword">int</span> *) arg++));<br>              p = buf;<br>              <span class="hljs-keyword">goto</span> <span class="hljs-built_in">string</span>;<br>              <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-string">'s'</span>:<br>              p = *arg++;<br>              <span class="hljs-keyword">if</span> (! p)<br>                p = <span class="hljs-string">"(null)"</span>;<br><br>            <span class="hljs-built_in">string</span>:<br>              <span class="hljs-keyword">while</span> (*p)<br>                <span class="hljs-built_in">putchar</span> (*p++);<br>              <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">default</span>:<br>              <span class="hljs-built_in">putchar</span> (*((<span class="hljs-keyword">int</span> *) arg++));<br>              <span class="hljs-keyword">break</span>;<br>            }<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
 
 
 
@@ -581,152 +758,396 @@
 <li>  本规范的修改日志</li>
 <li>  索引</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://gonglja.github.io">lj gong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://gonglja.github.io/posts/4e0f05fa/">http://gonglja.github.io/posts/4e0f05fa/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://gonglja.github.io" target="_blank">Gong's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/boot/">boot</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/f2b20ab4/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/20220310100235.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">一个简单的测试Linux进程栈空间大小的方法</div></div></a></div><div class="next-post pull-right"><a href="/posts/608e8634/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">va_list系列的使用及问题</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lj gong</div><div class="author-info__description">蓬生麻中，不扶而直，白沙在涅，与之俱黑。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gonglja"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/gonglja" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:glj0@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2022重新出发！加油加油</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Multiboot-%E8%A7%84%E8%8C%83"><span class="toc-number">1.</span> <span class="toc-text">Multiboot 规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiboot-%E8%A7%84%E8%8C%83-1"><span class="toc-number">1.1.</span> <span class="toc-text">Multiboot 规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiboot-%E8%A7%84%E8%8C%83%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Multiboot 规范简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Multiboot-%E8%A7%84%E8%8C%83%E8%AF%9E%E7%94%9F%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-number">1.2.1.</span> <span class="toc-text">Multiboot 规范诞生的背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%9E%B6%E6%9E%84"><span class="toc-number">1.2.2.</span> <span class="toc-text">目标架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">目标操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E6%BA%90"><span class="toc-number">1.2.4.</span> <span class="toc-text">引导源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%BC%95%E5%AF%BC%E6%97%B6%E9%85%8D%E7%BD%AE%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.5.</span> <span class="toc-text">在引导时配置操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E6%9B%B4%E5%AE%B9%E6%98%93"><span class="toc-number">1.2.6.</span> <span class="toc-text">如何使操作系统开发更容易</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.7.</span> <span class="toc-text">引导模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC-Multiboot-%E8%A7%84%E8%8C%83%E4%B8%AD%E6%89%80%E7%94%A8%E6%9C%AF%E8%AF%AD%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.</span> <span class="toc-text">本 Multiboot 规范中所用术语的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiboot-%E8%A7%84%E8%8C%83%E7%9A%84%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%B9%89"><span class="toc-number">1.4.</span> <span class="toc-text">Multiboot 规范的精确定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OS-%E6%98%A0%E5%83%8F%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text">OS 映像格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiboot-%E7%9A%84-Header-%E5%88%86%E5%B8%83"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">Multiboot 的 Header 分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiboot-Header-magic-%E5%9F%9F"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">Multiboot Header magic 域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiboot-Header-address-%E5%9F%9F"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">Multiboot Header address 域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiboot-%E5%A4%B4%E7%9A%84%E5%9B%BE%E5%BD%A2%E5%9F%9F"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">Multiboot 头的图形域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E7%8A%B6%E6%80%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">机器状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E4%BF%A1%E6%81%AF%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">引导信息格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.5.</span> <span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PC-%E6%9C%BA%E6%B3%A8%E8%AE%B0"><span class="toc-number">1.5.1.</span> <span class="toc-text">PC 机注记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BIOS-%E8%AE%BE%E5%A4%87%E6%98%A0%E5%B0%84%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.2.</span> <span class="toc-text">BIOS 设备映射技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%AF%94%E8%BE%83%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.3.</span> <span class="toc-text">数据比较技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#I-O-%E9%99%90%E5%88%B6%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.4.</span> <span class="toc-text">I&#x2F;O 限制技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OS-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.5.5.</span> <span class="toc-text">OS 代码示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#multiboot-h"><span class="toc-number">1.5.5.1.</span> <span class="toc-text">multiboot.h</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boot-S"><span class="toc-number">1.5.5.2.</span> <span class="toc-text">boot.S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kernel-c"><span class="toc-number">1.5.5.3.</span> <span class="toc-text">kernel.c</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-Multiboot-%E5%86%85%E6%A0%B8"><span class="toc-number">1.5.6.</span> <span class="toc-text">其他 Multiboot 内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.5.7.</span> <span class="toc-text">引导程序代码示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E8%A7%84%E8%8C%83%E7%9A%84%E4%BF%AE%E6%94%B9%E6%97%A5%E5%BF%97"><span class="toc-number">1.6.</span> <span class="toc-text">本规范的修改日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.7.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.8.</span> <span class="toc-text">目录</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156/" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2022-06-08T14:13:43.721Z" title="发表于 2022-06-08 22:13:43">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/42edd7ca/" title="docker下使用Dokerfile创建image"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206081114268.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker下使用Dokerfile创建image"/></a><div class="content"><a class="title" href="/posts/42edd7ca/" title="docker下使用Dokerfile创建image">docker下使用Dokerfile创建image</a><time datetime="2022-06-08T02:52:40.000Z" title="发表于 2022-06-08 10:52:40">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b6db5676/" title="c语言运算符优先级"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c语言运算符优先级"/></a><div class="content"><a class="title" href="/posts/b6db5676/" title="c语言运算符优先级">c语言运算符优先级</a><time datetime="2022-05-23T09:50:02.000Z" title="发表于 2022-05-23 17:50:02">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6c58185/" title="ubuntu下docker的使用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ubuntu下docker的使用"/></a><div class="content"><a class="title" href="/posts/6c58185/" title="ubuntu下docker的使用">ubuntu下docker的使用</a><time datetime="2022-05-11T10:38:23.000Z" title="发表于 2022-05-11 18:38:23">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux0.11环境搭建与阅读"/></a><div class="content"><a class="title" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读">linux0.11环境搭建与阅读</a><time datetime="2022-05-11T01:08:09.000Z" title="发表于 2022-05-11 09:08:09">2022-05-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By lj gong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
 
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(() => {
-  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
-  if ($mermaidWrap.length) {
-    window.runMermaid = () => {
-      window.loadMermaid = true
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
-
-      Array.from($mermaidWrap).forEach((item, index) => {
-        const mermaidSrc = item.firstElementChild
-        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
-        const mermaidID = 'mermaid-' + index
-        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
-        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
-        })
-      })
-    }
-
-    const loadMermaid = () => {
-      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
-    }
-
-    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-  }
-})()</script><script>function addGitalkSource () {
-  const ele = document.createElement('link')
-  ele.rel = 'stylesheet'
-  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
-  document.getElementsByTagName('head')[0].appendChild(ele)
-}
-
-function loadGitalk () {
-  function initGitalk () {
-    var gitalk = new Gitalk(Object.assign({
-      clientID: 'cf6d7d2674b768ef1bf7',
-      clientSecret: 'a8254412e77947a4ff26d08ce7af7b5853efbb44',
-      repo: 'gonglja.github.io',
-      owner: 'Gonglja',
-      admin: ['Gonglja'],
-      id: '9d1601a4884ede82f6e1719fff38433d',
-      updateCountCallback: commentCount
-    },null))
-
-    gitalk.render('gitalk-container')
-  }
-
-  if (typeof Gitalk === 'function') initGitalk()
-  else {
-    addGitalkSource()
-    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
-  }
-}
-
-function commentCount(n){
-  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
-  if (isCommentCount) {
-    isCommentCount.innerHTML= n
-  }
-}
-
-if ('Gitalk' === 'Gitalk' || !false) {
-  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
-  else loadGitalk()
-} else {
-  function loadOtherComment () {
-    loadGitalk()
-  }
-}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener scroll 
-  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
-  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
-
-  typeof preloader === 'object' && preloader.initLoading()
-  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/" class="category-chain-item">好文转载</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/boot/">#boot</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Multiboot规范</div>
+      <div>http://gonglja.github.io/posts/4e0f05fa/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>gong lj</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月1日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年6月8日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/f2b20ab4/" title="一个简单的测试Linux进程栈空间大小的方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">一个简单的测试Linux进程栈空间大小的方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/608e8634/" title="va_list系列的使用及问题">
+                        <span class="hidden-mobile">va_list系列的使用及问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('mermaid' in window) {
+        mermaid.init();
       }
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
     }
-  }
 
-  typeof typed === 'object' && typed.destroy()
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
 
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
+  <script>Fluid.plugins.codeWidget();</script>
 
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
 
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
 
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
 
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
 
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
+  <script>Fluid.plugins.imageCaption();</script>
 
-  typeof preloader === 'object' && preloader.endLoading()
-})
+  <script  src="/js/local-search.js" ></script>
 
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

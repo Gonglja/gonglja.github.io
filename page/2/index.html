@@ -1,386 +1,967 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Gong's Blog</title><meta name="author" content="lj gong"><meta name="copyright" content="lj gong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="蓬生麻中，不扶而直，白沙在涅，与之俱黑。">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="gong lj">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Stay hungry, Stay foolish!">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gong&#39;s Blog">
+<meta property="og:title" content="Sky Road">
 <meta property="og:url" content="http://gonglja.github.io/page/2/index.html">
-<meta property="og:site_name" content="Gong&#39;s Blog">
-<meta property="og:description" content="蓬生麻中，不扶而直，白沙在涅，与之俱黑。">
+<meta property="og:site_name" content="Sky Road">
+<meta property="og:description" content="Stay hungry, Stay foolish!">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png">
-<meta property="article:author" content="lj gong">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gonglja.github.io/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: true,
-  isAnchor: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Gong\'s Blog',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: undefined,
-  isToc: false,
-  postUpdate: '2022-08-07 23:30:59'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+<meta property="article:author" content="gong lj">
+<meta name="twitter:card" content="summary_large_image">
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Sky Road</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gonglja.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"ba9ad47a532e073820aabc9b0ffb6c5b","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.0.0">
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?ba9ad47a532e073820aabc9b0ffb6c5b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://images.pexels.com/photos/12486830/pexels-photo-12486830.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Gong's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="https://gonglja.github.io/Notes"><i class="fa-fw fas fa-link"></i><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Gong's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/gonglja" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:glj0@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/posts/3b31c731/" title="c语言中给定一个函数地址如何调用呢？"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111548715.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c语言中给定一个函数地址如何调用呢？"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/3b31c731/" title="c语言中给定一个函数地址如何调用呢？">c语言中给定一个函数地址如何调用呢？</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-11T07:48:18.000Z" title="发表于 2022-04-11 15:48:18">2022-04-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</a></span></div><div class="content">背景在u-boot代码中有时会给出一个函数的地址（0x123456789xx），比如下面这种
-然后告诉参数类型和返回值类型，那么我们要怎么使用呢？
-
-首先先了解一下c语言中的函数
-123456789void fun() {    printf("fun call\r\n");} int main() {       printf("address fun:%p\r\n",fun);    printf("address fun:%p\r\n",&amp;fun);    return 0;}
-
-编译运行结果如下，可以看到二者地址是一致的，但是其意义却大不相同
-
-fun 是fun函数的首地址，类型是 void ()。
-&amp;fun表示指向函数fun这个对象的地址，类型是void (*)()。
+</head>
 
 
-继续在了解一下函数指针类型
-其本身是一个指针，只不过该指针指向函数。
-其格式如：函数返回值数据类型 （*指针变量名）（函数的实际参数或者函数参数的类型），其中指针变量名可以省略。
-形如void * (*f) (void *) ，意思是f是一个指针，其指向一个函数（可以是 void* fun( ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/eeea93b8/" title="TEST"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TEST"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/eeea93b8/" title="TEST">TEST</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-11T04:16:45.000Z" title="发表于 2022-04-11 12:16:45">2022-04-11</time></span></div><div class="content">12graph TD    开始--&gt; 结束
-
-12graph BT   开始--&gt; 结束
-
-12graph RL	开始 --&gt; 结束
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/f88e6d17/" title="【源码分析】u-boot-2014.04 分析（未完待续）"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204082006861.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【源码分析】u-boot-2014.04 分析（未完待续）"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/f88e6d17/" title="【源码分析】u-boot-2014.04 分析（未完待续）">【源码分析】u-boot-2014.04 分析（未完待续）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-29T01:33:08.000Z" title="发表于 2022-03-29 09:33:08">2022-03-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</a></span></div><div class="content">u-boot-2014.04 分析​    由于要移植一个 kernel 和 u-boot 到 smart210 平台，所以就有了该篇记录。
-本文使用的版本是 u-boot-2022.04-rc4.tar.bz2 u-boot-2014.04（因作者能力不够，遂从2014.04开始）
-s5pv210芯片启动流程由三星官方手册可知，整个启动分为三阶段，BL0、BL1、BL2，其中BL0运行内部iROM中，BL1和BL2运行在SRAM中，但在实际项目中使用的比较通用的启动流程与官方流程有较大差异，为什么呢？因为编译的u-boot过大，超过最大80k限制。所以BL2在SDRAM中运行，而三星官方是放在内部SRAM中运行。
-
-BL0
-运行在iROM上
-代码固定在s5pv210的IROM中，无法修改。上电后直接从IROM中开始执行
-主要工作
-初始化系统时钟、特殊设备控制器、启动设备、看门狗、SRAM等
-验证BL1镜像
-从存储介质上（比如SD/eMMC/nand flash）等加载BL1镜像到内部SRAM中
-跳转到BL1镜像所在地址
-
-
-
-BL1
-运行在SRAM上
-BL1代码在BL0段被加载到SR ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/d78cdbc6/" title="Archlinux从安装到使用（持续更新中）"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://archlinux.org/static/logos/archlinux-logo-dark-1200dpi.b42bd35d5916.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Archlinux从安装到使用（持续更新中）"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/d78cdbc6/" title="Archlinux从安装到使用（持续更新中）">Archlinux从安装到使用（持续更新中）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-25T08:31:48.000Z" title="发表于 2022-03-25 16:31:48">2022-03-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/">软件配置</a></span></div><div class="content"> 
-
-Archlinux 从安装到使用（持续更新中）
-关于关于Archlinux的介绍，自行查看主页
-安装本文尝试过手动输入命令安装和archinstall 安装两种形式，手动命令安装参考 吴迪大佬的三部曲 安装 配置 常用软件。
-经实验，可完美安装在redmibook pro15s 上，但由于一些软件体验不友好（此处点名腾讯类），所以切换为 Windows10 + Vmware ，在Vmware中安装archlinux。以下为在虚拟机中安装
-
-虚拟机软件配置向导首先打开Vmware Workstation，点击文件 - 新建虚拟机，选择自定义（高级），
-点击下一步，在安装来源中选择 安装程序光盘映像文件，点击右边的浏览找到你下载的archlinux-2022.03.01-x86_64.iso ，
-点击下一步，选择操作系统为Linux，版本为 其他Linux5.x内核64位，
-点击下一步，填写虚拟机的名称和要放置的位置，
-点击下一步，选择处理器数量（本文1），每个处理器的内核数量（我的系统有12个，所填12），
-下一步，选择虚拟机的内存（我分配的8G，因为后续要安装GNOME桌面，可能 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/74f0a0fa/" title="GS87D键盘说明书"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111243846.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GS87D键盘说明书"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/74f0a0fa/" title="GS87D键盘说明书">GS87D键盘说明书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-22T12:46:51.000Z" title="发表于 2022-03-22 20:46:51">2022-03-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AF%B4%E6%98%8E%E4%B9%A6/">说明书</a></span></div><div class="content">有一个不太好的习惯，有时候喜欢收集说明书，每次都是攒一堆，然后越来越多的时候，直接一下丢了。
-本文的主人公也是，在买来后就被丢到了角落。
-最近需要使用在双电脑间切换键盘，依稀记得键盘支持最高三个蓝牙设备连接，凭着记忆怎么也没弄好，无奈百度一下，找到了一个教程，其中作者说明书也是找不着了，然后整理了一个博客。但按照上面的方法还是没有设置成功。遂又去找客服，不得不说，还是官方教程好使。记录下
-蓝牙连接1、开关拨OFF，装电池，拨到ON，指示灯会闪烁一下2、然后FN按住，再按一下Q，接着空格右边FN按住，再按住P，长按，第1个设备打开蓝牙搜索，连接。就可以正常输入，能打字了3、FN按住，再按一下W，切换到第二个设备键盘无反应状态，接着空格右边FN按住，再按住P，长按，第2个设备打开蓝牙搜索，连接4、都好了之后，FN按住，再按一下Q或者W可以切换设备
-QWERT一共5个设备切换，先切换，再对码，操作
-参考https://www.jianshu.com/p/ce4fd3f3e598
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/4bb7b00b/" title="关于实模式与保护模式"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于实模式与保护模式"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/4bb7b00b/" title="关于实模式与保护模式">关于实模式与保护模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-11T09:16:49.000Z" title="发表于 2022-03-11 17:16:49">2022-03-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/">好文转载</a></span></div><div class="content">首先到了80386时代，CPU有了四种运行模式，即实模式、保护模式、虚拟8086模式和SMM模式。
-其中实模式指的是8086的运行模式，不过这个是后来提出的概念，在8086时代只有当时的运行模式。
-
-以下转自：https://zhuanlan.zhihu.com/p/42309472
-
-实模式和保护模式都是 CPU 的工作模式，而 CPU 的工作模式是指 CPU 的寻址方式、寄存器大小等用来反应 CPU 在该环境下如何工作的概念。
-实模式工作原理实模式出现于早期 8088CPU 时期。当时由于 CPU 的性能有限，一共只有 20 位地址线（所以地址空间只有 1MB），以及 8 个 16 位的通用寄存器，以及 4 个 16 位的段寄存器。所以为了能够通过这些 16 位的寄存器去构成 20 位的主存地址，必须采取一种特殊的方式。当某个指令想要访问某个内存地址时，它通常需要用下面的这种格式来表示：
-　　段基址：段偏移量
-　 其中第一个字段是段基址，它的值是由段寄存器提供的 (一般来说，段寄存器有 6 种，分别为 cs, ds, ss, es, fs, gs,这几种段寄存器都有自己的特殊意义， ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/d8f56567/" title="从char(unsigned char)数组拷贝至string的方法"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从char(unsigned char)数组拷贝至string的方法"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/d8f56567/" title="从char(unsigned char)数组拷贝至string的方法">从char(unsigned char)数组拷贝至string的方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-10T00:56:04.000Z" title="发表于 2022-03-10 08:56:04">2022-03-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</a></span></div><div class="content">标准C++标准 https://en.cppreference.com/w/cpp/string/basic_string/basic_string 中第4条，构造时传入char *指针和待传入的数据长度 
-basic_string( const CharT* s, size_type count, const Allocator&amp; alloc = Allocator() );
-示例12345678910#include &lt;iostream&gt;#include &lt;string&gt;int main(){    uint8_t a[] = {0x30,0x31,0x33,0x35,0x0,0x30,0x31,0x33,0x35,0x0,0x30,0x31,0x33,0x35,0x0,0x30,0x31,0x33,0x35,0x0,};    std::string s(reinterpret_cast&lt;char *&gt;(a), sizeof(a));    std::cout &lt;&lt; "size:"&lt;&lt;s.size()&lt;&l ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/8299be4a/" title="STL库中copy的使用"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STL库中copy的使用"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/8299be4a/" title="STL库中copy的使用">STL库中copy的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-10T00:55:14.000Z" title="发表于 2022-03-10 08:55:14">2022-03-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</a></span></div><div class="content">标准https://en.cppreference.com/w/cpp/algorithm/copy
-示例12345678910111213141516171819202122232425262728293031323334#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;string&gt;// 打印 std::vector 类型template &lt;class T&gt;void print(T &amp;vecs) {    std::cout &lt;&lt; "vecs-&gt;size:"&lt;&lt;vecs.size() &lt;&lt; "\t data:";    for(auto&amp; v : vecs)         std::cout &lt;&lt; v &lt;&lt; " ";    std::cout &lt;&lt; std::endl;}int main () {    std::vector&lt;char&gt; vecs{'A','B','C','D','E' ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/f2b20ab4/" title="一个简单的测试Linux进程栈空间大小的方法"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/20220310100235.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一个简单的测试Linux进程栈空间大小的方法"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/f2b20ab4/" title="一个简单的测试Linux进程栈空间大小的方法">一个简单的测试Linux进程栈空间大小的方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-10T00:51:25.000Z" title="发表于 2022-03-10 08:51:25">2022-03-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/">技术随笔</a></span></div><div class="content">一个简单的测试linux进程栈空间大小的方法背景在ubuntu中，可以通过命令ulimit -a 查看所有的限制信息（ulimit -s 直接显示stack size）
-
-但在某些嵌入式开发板中，通过此命令查看到的stack size显示ulimited （无限制，假），但实际中是有限制的，不知道stack size 不利于大型项目的开发（栈空间使用过多后程序会直接挂 segmentation fault）。所以，得到一个真实的stack size尤为重要。
-思路A函数每次创建 1024bytes 数据；使用全局变量存储A函数调用次数，每次调用A函数+1；
-主函数中递归调用A函数，由于主函数中栈空间相对于子线程会大一些，所以在子线程中递归调用。最终栈溢出后通过屏幕打印的计数即可得到大概的stack size。忽略掉函数调用栈空间占用。
-另一种思路：通过汇编得到esp指针获得起始位置，结束位置通过递归调用栈溢出后gdb打印esp指针获得结束位置。详见https://blog.csdn.net/yangkuanqaz85988/article/details/52403726
-实现1234 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/4e0f05fa/" title="Multiboot规范"><img class="post_bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Multiboot规范"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/4e0f05fa/" title="Multiboot规范">Multiboot规范</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-01T14:13:25.000Z" title="发表于 2022-03-01 22:13:25">2022-03-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/">好文转载</a></span></div><div class="content">
-原英文 https://www.gnu.org/software/grub/manual/multiboot/multiboot.html
-
-
-原文地址 blog.csdn.net
-
-[TOC]
-Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。
-
-  概览
-  术语
-  规范
-  示例
-  历史
-  调用 mbchk：如何使用多重引导检查器
-  索引
-
-Multiboot 规范简介本章描述了一些关于 Multiboot 规范的粗略的信息。注意，这不是规范本身的一部分。
-
-动机
-
-架构
-
-操作系统
-
-引导源
-
-引导时配置
-
-为操作系统带来的便利
-
-引导模块
-
-
-Multiboot 规范诞生的背景几乎每种现有的操作系统都拥有自己的引导程序。在机器上安装一个新的操作系统时通常意味着要引入一套全新的引导机制，每种的安装和运行界面都不相同。使多种操作系统相安无事地共存于一个机器上通常要借助于链式机制，这可是个恶梦。基本上你不能选择某个操作系统的引导程序——如果操作系统自带的引导程序不是你想要的，或者 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202204111228921.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lj gong</div><div class="author-info__description">蓬生麻中，不扶而直，白沙在涅，与之俱黑。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Gonglja"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/gonglja" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:glj0@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">2022重新出发！加油加油</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/4a17b156/" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/4a17b156/" title="Hello World">Hello World</a><time datetime="2022-06-08T14:13:43.721Z" title="发表于 2022-06-08 22:13:43">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/42edd7ca/" title="docker下使用Dokerfile创建image"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202206081114268.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker下使用Dokerfile创建image"/></a><div class="content"><a class="title" href="/posts/42edd7ca/" title="docker下使用Dokerfile创建image">docker下使用Dokerfile创建image</a><time datetime="2022-06-08T02:52:40.000Z" title="发表于 2022-06-08 10:52:40">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b6db5676/" title="c语言运算符优先级"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c语言运算符优先级"/></a><div class="content"><a class="title" href="/posts/b6db5676/" title="c语言运算符优先级">c语言运算符优先级</a><time datetime="2022-05-23T09:50:02.000Z" title="发表于 2022-05-23 17:50:02">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6c58185/" title="ubuntu下docker的使用"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ubuntu下docker的使用"/></a><div class="content"><a class="title" href="/posts/6c58185/" title="ubuntu下docker的使用">ubuntu下docker的使用</a><time datetime="2022-05-11T10:38:23.000Z" title="发表于 2022-05-11 18:38:23">2022-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux0.11环境搭建与阅读"/></a><div class="content"><a class="title" href="/posts/ca3a0e2a/" title="linux0.11环境搭建与阅读">linux0.11环境搭建与阅读</a><time datetime="2022-05-11T01:08:09.000Z" title="发表于 2022-05-11 09:08:09">2022-05-11</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/"><span class="card-category-list-name">好文转载</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">技术随笔</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AF%B4%E6%98%8E%E4%B9%A6/"><span class="card-category-list-name">说明书</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/"><span class="card-category-list-name">软件配置</span><span class="card-category-list-count">6</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/archlinux/" style="font-size: 1.23em; color: #999ea6">archlinux</a> <a href="/tags/assembly/" style="font-size: 1.23em; color: #999ea6">assembly</a> <a href="/tags/boot/" style="font-size: 1.1em; color: #999">boot</a> <a href="/tags/c/" style="font-size: 1.5em; color: #99a9bf">c</a> <a href="/tags/coredumped/" style="font-size: 1.1em; color: #999">coredumped</a> <a href="/tags/cpp/" style="font-size: 1.37em; color: #99a4b2">cpp</a> <a href="/tags/device-tree/" style="font-size: 1.1em; color: #999">device-tree</a> <a href="/tags/docker/" style="font-size: 1.23em; color: #999ea6">docker</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/linux/" style="font-size: 1.5em; color: #99a9bf">linux</a> <a href="/tags/nfs/" style="font-size: 1.1em; color: #999">nfs</a> <a href="/tags/os/" style="font-size: 1.1em; color: #999">os</a> <a href="/tags/stl/" style="font-size: 1.1em; color: #999">stl</a> <a href="/tags/string/" style="font-size: 1.1em; color: #999">string</a> <a href="/tags/ubuntu/" style="font-size: 1.37em; color: #99a4b2">ubuntu</a> <a href="/tags/vmware/" style="font-size: 1.23em; color: #999ea6">vmware</a> <a href="/tags/%E9%94%AE%E7%9B%98/" style="font-size: 1.1em; color: #999">键盘</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">四月 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">三月 2022</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">二月 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">22</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2021-12-31T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">69.6k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-08-07T15:30:59.043Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By lj gong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
-
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function subtitleType () {
-  if (true) { 
-    window.typed = new Typed("#subtitle", {
-      strings: ["今日事&#44;今日毕","RTFM - Read The Fucking Manual.","RTFSC – Read The Fucking Source Code."],
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
-  }
-}
-
-if (true) {
-  if (typeof Typed === 'function') {
-    subtitleType()
-  } else {
-    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
-  }
-} else {
-  subtitleType()
-}</script><script>(() => {
-  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
-  if ($mermaidWrap.length) {
-    window.runMermaid = () => {
-      window.loadMermaid = true
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
-
-      Array.from($mermaidWrap).forEach((item, index) => {
-        const mermaidSrc = item.firstElementChild
-        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
-        const mermaidID = 'mermaid-' + index
-        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
-        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
-        })
-      })
-    }
-
-    const loadMermaid = () => {
-      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
-    }
-
-    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-  }
-})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener scroll 
-  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
-  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
-
-  typeof preloader === 'object' && preloader.initLoading()
-  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+<body>
   
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sky Road</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/3b31c731/" target="_self">
+          c语言中给定一个函数地址如何调用呢？
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3b31c731/" target="_self">
+        <div>
+          背景在u-boot代码中有时会给出一个函数的地址（0x123456789xx），比如下面这种 然后告诉参数类型和返回值类型，那么我们要怎么使用呢？  首先先了解一下c语言中的函数 123456789void fun() {    printf("fun call\r\n");} int main() {       printf("address fun:%p\r\n",fun);    prin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-11 15:48" pubdate>
+              2022-04-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/" class="category-chain-item">技术随笔</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c/">#c</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/eeea93b8/" target="_self">
+          TEST
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/eeea93b8/" target="_self">
+        <div>
+          graph TD     开始--&gt; 结束   graph BT    开始--&gt; 结束   graph RL 	开始 --&gt; 结束
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-11 12:16" pubdate>
+              2022-04-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/f88e6d17/" target="_self">
+          【源码分析】u-boot-2014.04 分析（未完待续）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f88e6d17/" target="_self">
+        <div>
+          u-boot-2014.04 分析​    由于要移植一个 kernel 和 u-boot 到 smart210 平台，所以就有了该篇记录。 本文使用的版本是 u-boot-2022.04-rc4.tar.bz2 u-boot-2014.04（因作者能力不够，遂从2014.04开始） s5pv210芯片启动流程由三星官方手册可知，整个启动分为三阶段，BL0、BL1、BL2，其中BL0运行内部iRO
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-29 09:33" pubdate>
+              2022-03-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/" class="category-chain-item">技术随笔</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/d78cdbc6/" target="_self">
+          Archlinux从安装到使用（持续更新中）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d78cdbc6/" target="_self">
+        <div>
+          Archlinux 从安装到使用（持续更新中） 关于关于Archlinux的介绍，自行查看主页 安装本文尝试过手动输入命令安装和archinstall 安装两种形式，手动命令安装参考 吴迪大佬的三部曲 安装 配置 常用软件。 经实验，可完美安装在redmibook pro15s 上，但由于一些软件体验不友好（此处点名腾讯类），所以切换为 Windows10 + Vmware ，在Vmware
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-25 16:31" pubdate>
+              2022-03-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vmware/">#vmware</a>
+            
+              <a href="/tags/archlinux/">#archlinux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/74f0a0fa/" target="_self">
+          GS87D键盘说明书
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/74f0a0fa/" target="_self">
+        <div>
+          有一个不太好的习惯，有时候喜欢收集说明书，每次都是攒一堆，然后越来越多的时候，直接一下丢了。 本文的主人公也是，在买来后就被丢到了角落。 最近需要使用在双电脑间切换键盘，依稀记得键盘支持最高三个蓝牙设备连接，凭着记忆怎么也没弄好，无奈百度一下，找到了一个教程，其中作者说明书也是找不着了，然后整理了一个博客。但按照上面的方法还是没有设置成功。遂又去找客服，不得不说，还是官方教程好使。记录下 蓝牙连接
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-22 20:46" pubdate>
+              2022-03-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%B4%E6%98%8E%E4%B9%A6/" class="category-chain-item">说明书</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%94%AE%E7%9B%98/">#键盘</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/4bb7b00b/" target="_self">
+          关于实模式与保护模式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4bb7b00b/" target="_self">
+        <div>
+          首先到了80386时代，CPU有了四种运行模式，即实模式、保护模式、虚拟8086模式和SMM模式。 其中实模式指的是8086的运行模式，不过这个是后来提出的概念，在8086时代只有当时的运行模式。  以下转自：https://zhuanlan.zhihu.com/p/42309472  实模式和保护模式都是 CPU 的工作模式，而 CPU 的工作模式是指 CPU 的寻址方式、寄存器大小等用来反应
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-11 17:16" pubdate>
+              2022-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/" class="category-chain-item">好文转载</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/assembly/">#assembly</a>
+            
+              <a href="/tags/os/">#os</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/d8f56567/" target="_self">
+          从char(unsigned char)数组拷贝至string的方法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d8f56567/" target="_self">
+        <div>
+          标准C++标准 https://en.cppreference.com/w/cpp/string/basic_string/basic_string 中第4条，构造时传入char *指针和待传入的数据长度  basic_string( const CharT* s, size_type count, const Allocator&amp; alloc = Allocator() ); 示例123
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-10 08:56" pubdate>
+              2022-03-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/" class="category-chain-item">技术随笔</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cpp/">#cpp</a>
+            
+              <a href="/tags/string/">#string</a>
+            
+              <a href="/tags/gdb/">#gdb</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/8299be4a/" target="_self">
+          STL库中copy的使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8299be4a/" target="_self">
+        <div>
+          标准https://en.cppreference.com/w/cpp/algorithm/copy 示例12345678910111213141516171819202122232425262728293031323334#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;string&gt;// 打印 std::vector
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-10 08:55" pubdate>
+              2022-03-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/" class="category-chain-item">技术随笔</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cpp/">#cpp</a>
+            
+              <a href="/tags/stl/">#stl</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/f2b20ab4/" target="_self">
+          一个简单的测试Linux进程栈空间大小的方法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f2b20ab4/" target="_self">
+        <div>
+          一个简单的测试linux进程栈空间大小的方法背景在ubuntu中，可以通过命令ulimit -a 查看所有的限制信息（ulimit -s 直接显示stack size）  但在某些嵌入式开发板中，通过此命令查看到的stack size显示ulimited （无限制，假），但实际中是有限制的，不知道stack size 不利于大型项目的开发（栈空间使用过多后程序会直接挂 segmentation f
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-10 08:51" pubdate>
+              2022-03-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/" class="category-chain-item">技术随笔</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/c/">#c</a>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/posts/4e0f05fa/" target="_self">
+          Multiboot规范
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4e0f05fa/" target="_self">
+        <div>
+          原英文 https://www.gnu.org/software/grub/manual/multiboot/multiboot.html   原文地址 blog.csdn.net  [TOC] Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。    概览   术语   规范   示例   历史
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-01 22:13" pubdate>
+              2022-03-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E8%BD%BD/" class="category-chain-item">好文转载</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/boot/">#boot</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
       }
-    }
-  }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-  typeof typed === 'object' && typed.destroy()
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
 
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
 
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
 
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+  <script  src="/js/local-search.js" ></script>
 
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
 
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
 
-  typeof preloader === 'object' && preloader.endLoading()
-})
 
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
