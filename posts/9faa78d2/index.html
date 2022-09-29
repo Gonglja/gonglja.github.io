@@ -116,7 +116,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -339,9 +339,11 @@
 <p>value有多种取值方式。</p>
 <ul>
 <li><p>一个32位的数据，用尖括号包围起来，如</p>
-  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">interrupts = &lt;<span class="hljs-number">17</span>&gt;<br></code></pre></td></tr></tbody></table></figure></li>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">interrupts = &lt;<span class="hljs-number">17</span>&gt;<br></code></pre></td></tr></tbody></table></figure>
+</li>
 <li><p>一个64位数据（使用2个32位数据表示），用尖括号围起来，如：</p>
-  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">clock-frequency = &lt;<span class="hljs-number">0x00000001</span> <span class="hljs-number">0x00000000</span>&gt;<br></code></pre></td></tr></tbody></table></figure></li>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">clock-frequency = &lt;<span class="hljs-number">0x00000001</span> <span class="hljs-number">0x00000000</span>&gt;<br></code></pre></td></tr></tbody></table></figure>
+</li>
 <li><p>一个有结束字符的字符串”disabled”，如</p>
   <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">status = <span class="hljs-string">"disabled"</span><br></code></pre></td></tr></tbody></table></figure>
 
@@ -351,9 +353,7 @@
 
 </li>
 <li><p>也可以是各种值的组合，用<code>，</code>隔开</p>
-  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">compatible = <span class="hljs-string">"samsung,smart210"</span>, <span class="hljs-string">"samsung,s5pv210"</span>;<br></code></pre></td></tr></tbody></table></figure>
-
-</li>
+  <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">compatible = <span class="hljs-string">"samsung,smart210"</span>, <span class="hljs-string">"samsung,s5pv210"</span>;<br></code></pre></td></tr></tbody></table></figure></li>
 </ul>
 <h4 id="一些标准属性"><a href="#一些标准属性" class="headerlink" title="一些标准属性"></a>一些标准属性</h4><h5 id="compatiable-属性"><a href="#compatiable-属性" class="headerlink" title="compatiable 属性"></a>compatiable 属性</h5><p>其本意为“兼容”，对于某个LED，内核中有三个驱动A、B、C支持它。</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">led {<br>    compiable = <span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</span>, <span class="hljs-string">"C"</span>;<br>};<br></code></pre></td></tr></tbody></table></figure>
@@ -371,7 +371,7 @@
 <p>比如一段内存，怎么描述它的起始地址和大小？</p>
 <p>以下示例中，<code>address-cells</code>为1，表示用1个32位数表示地址，即用<code>0x80000000</code>表示起始地址</p>
 <p><code>size-cells</code>为1，表示用1个32位数表示大小，即用<code>0x20000000</code>表示大小</p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">/ {   <br>    <span class="hljs-meta"># address-cells = <span class="hljs-meta-string">&lt;1&gt;</span>;   </span><br>    <span class="hljs-meta"># size-cells = <span class="hljs-meta-string">&lt;1&gt;</span>;   </span><br>    memory {   <br>        reg = &lt;<span class="hljs-number">0x20000000</span> <span class="hljs-number">0x20000000</span>&gt;;   <br>    };   <br>};<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">/ {   <br>    <span class="hljs-meta"># address-cells = <span class="hljs-string">&lt;1&gt;</span>;   </span><br>    <span class="hljs-meta"># size-cells = <span class="hljs-string">&lt;1&gt;</span>;   </span><br>    memory {   <br>        reg = &lt;<span class="hljs-number">0x20000000</span> <span class="hljs-number">0x20000000</span>&gt;;   <br>    };   <br>};<br></code></pre></td></tr></tbody></table></figure>
 
 <h5 id="reg-属性"><a href="#reg-属性" class="headerlink" title="reg 属性"></a>reg 属性</h5><p>reg本意是register，用来表示寄存器地址。但在设备树中，用来描述一段空间。对于ARM系统，寄存器和内存是统一编址的，访问寄存器时用某块地址，访问内存时用某块地址，在访问方法上没有区别。</p>
 <p>reg属性的值，是一系列的”address size”，用多少个32位的数来表示address和size，是由#address-cells 和 #size-cells决定的。</p>
@@ -383,7 +383,7 @@
 
 <h5 id="CPU-节点"><a href="#CPU-节点" class="headerlink" title="CPU 节点"></a>CPU 节点</h5><p>一般不需要我们设置，在dtsi中都设置好了。</p>
 <h5 id="memmory-节点"><a href="#memmory-节点" class="headerlink" title="memmory 节点"></a>memmory 节点</h5><p>厂商不知道板子要用多大的内存，所以此处需要自行设定</p>
-<figure class="highlight abnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">memory {   <br>      reg = &lt;<span class="hljs-number">0</span>x20000000 <span class="hljs-number">0</span>x20000000&gt;<span class="hljs-comment">;   </span><br>}<span class="hljs-comment">;  </span><br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight abnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">memory {   <br>      reg <span class="hljs-operator">=</span> &lt;<span class="hljs-number">0</span>x20000000 <span class="hljs-number">0</span>x20000000&gt;<span class="hljs-comment">;   </span><br>}<span class="hljs-comment">;  </span><br></code></pre></td></tr></tbody></table></figure>
 
 
 

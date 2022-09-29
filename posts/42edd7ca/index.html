@@ -16,15 +16,15 @@
   <meta name="author" content="gong lj">
   <meta name="keywords" content="">
   
-    <meta name="description" content="docker下使用Dockerfile创建image创建Dockerfile 文件123456789101112131415161718192021222324252627282930313233# 使用 ubuntu:21.04 作为基板，以下都是在此基础上安装等等FROM ubuntu:21.04# 指定维护者信息MAINTAINER acoollib&lt;acoollib@gmail.co">
+    <meta name="description" content="docker下使用Dockerfile创建image创建 Dockerfile 文件文件如下 123456789101112131415161718192021222324252627282930313233# 使用 ubuntu:21.04 作为基板，以下都是在此基础上安装等等FROM ubuntu:21.04# 指定维护者信息MAINTAINER acoollib&lt;acoollib@gm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker下使用Dokerfile创建image">
 <meta property="og:url" content="http://gonglja.github.io/posts/42edd7ca/index.html">
 <meta property="og:site_name" content="Sky Road">
-<meta property="og:description" content="docker下使用Dockerfile创建image创建Dockerfile 文件123456789101112131415161718192021222324252627282930313233# 使用 ubuntu:21.04 作为基板，以下都是在此基础上安装等等FROM ubuntu:21.04# 指定维护者信息MAINTAINER acoollib&lt;acoollib@gmail.co">
+<meta property="og:description" content="docker下使用Dockerfile创建image创建 Dockerfile 文件文件如下 123456789101112131415161718192021222324252627282930313233# 使用 ubuntu:21.04 作为基板，以下都是在此基础上安装等等FROM ubuntu:21.04# 指定维护者信息MAINTAINER acoollib&lt;acoollib@gm">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-08T02:52:40.000Z">
-<meta property="article:modified_time" content="2022-09-28T15:00:15.030Z">
+<meta property="article:modified_time" content="2022-09-29T05:42:34.447Z">
 <meta property="article:author" content="gong lj">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -112,7 +112,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.2k 字
         
       </span>
     
@@ -313,7 +313,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年9月28日 晚上
+                    本文最后更新于：2022年9月29日 下午
                   
                 
               </p>
@@ -321,7 +321,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="docker下使用Dockerfile创建image"><a href="#docker下使用Dockerfile创建image" class="headerlink" title="docker下使用Dockerfile创建image"></a>docker下使用Dockerfile创建image</h1><h2 id="创建Dockerfile-文件"><a href="#创建Dockerfile-文件" class="headerlink" title="创建Dockerfile 文件"></a>创建Dockerfile 文件</h2><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># 使用 ubuntu:21.04 作为基板，以下都是在此基础上安装等等</span><br><span class="hljs-keyword">FROM</span> ubuntu:<span class="hljs-number">21.04</span><br><span class="hljs-comment"># 指定维护者信息</span><br><span class="hljs-keyword">MAINTAINER</span> acoollib&lt;acoollib@gmail.com&gt;<br><span class="hljs-comment"># 运行命令，推荐此方式，但是此方式写起来比较麻烦，后续直接使用另一种方式</span><br><span class="hljs-comment"># 具体查看 参考3链接</span><br><span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"/bin/bash"</span>,<span class="hljs-string">"-c"</span>,<span class="hljs-string">"echo hello"</span>]</span><br><span class="hljs-comment"># 添加用户</span><br><span class="hljs-keyword">RUN</span><span class="bash"> useradd --create-home -u 1000 u</span><br><span class="hljs-comment"># 修改时区</span><br><span class="hljs-keyword">ENV</span> TZ=Asia/Shanghai<br><span class="hljs-keyword">RUN</span><span class="bash"> ln -snf /usr/share/zoneinfo/<span class="hljs-variable">$TZ</span> /etc/localtime &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$TZ</span> &gt; /etc/timezone</span><br><br><span class="hljs-comment"># 换源</span><br><span class="hljs-keyword">RUN</span><span class="bash"> sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="hljs-keyword">RUN</span><span class="bash"> sed -i <span class="hljs-string">'/security.ubuntu.com/d'</span> /etc/apt/sources.list</span><br><br><span class="hljs-comment"># 安装软件</span><br><span class="hljs-keyword">RUN</span><span class="bash"> apt-get clean &amp;&amp; apt-get update &amp;&amp; apt-get install -y repo git ssh make gcc libssl-dev liblz4-tool \</span><br><span class="bash">    expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support \</span><br><span class="bash">    qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip \</span><br><span class="bash">    device-tree-compiler ncurses-dev \</span><br><span class="bash">    time \</span><br><span class="bash">    openssh-server net-tools</span><br><span class="hljs-comment"># 替换 openssh-server 配置，使其支持root登录</span><br><span class="hljs-keyword">RUN</span><span class="bash"> sed -i <span class="hljs-string">'/.*PermitRootLogin*/c\PermitRootLogin yes'</span> /etc/ssh/sshd_config</span><br><br><span class="hljs-comment"># 使用创建好的用户</span><br><span class="hljs-keyword">USER</span> u<br><br><span class="hljs-comment"># 工作目录使用 /home/u</span><br><span class="hljs-keyword">WORKDIR</span><span class="bash"> /home/u</span><br><br></code></pre></td></tr></tbody></table></figure>
+                <h1 id="docker下使用Dockerfile创建image"><a href="#docker下使用Dockerfile创建image" class="headerlink" title="docker下使用Dockerfile创建image"></a>docker下使用Dockerfile创建image</h1><h2 id="创建-Dockerfile-文件"><a href="#创建-Dockerfile-文件" class="headerlink" title="创建 Dockerfile 文件"></a>创建 Dockerfile 文件</h2><p>文件如下</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># 使用 ubuntu:21.04 作为基板，以下都是在此基础上安装等等</span><br><span class="hljs-keyword">FROM</span> ubuntu:<span class="hljs-number">21.04</span><br><span class="hljs-comment"># 指定维护者信息</span><br><span class="hljs-keyword">MAINTAINER</span> acoollib&lt;acoollib@gmail.com&gt;<br><span class="hljs-comment"># 运行命令，推荐此方式，但是此方式写起来比较麻烦，后续直接使用另一种方式</span><br><span class="hljs-comment"># 具体查看 参考3链接</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> [<span class="hljs-string">"/bin/bash"</span>,<span class="hljs-string">"-c"</span>,<span class="hljs-string">"echo hello"</span>]</span><br><span class="hljs-comment"># 添加用户</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> useradd --create-home -u 1000 u</span><br><span class="hljs-comment"># 修改时区</span><br><span class="hljs-keyword">ENV</span> TZ=Asia/Shanghai<br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">ln</span> -snf /usr/share/zoneinfo/<span class="hljs-variable">$TZ</span> /etc/localtime &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$TZ</span> &gt; /etc/timezone</span><br><br><span class="hljs-comment"># 换源</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> sed -i <span class="hljs-string">'/security.ubuntu.com/d'</span> /etc/apt/sources.list</span><br><br><span class="hljs-comment"># 安装软件</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get clean &amp;&amp; apt-get update &amp;&amp; apt-get install -y repo git ssh make gcc libssl-dev liblz4-tool \</span><br><span class="language-bash">    expect g++ patchelf chrpath gawk texinfo chrpath diffstat binfmt-support \</span><br><span class="language-bash">    qemu-user-static live-build bison flex fakeroot cmake gcc-multilib g++-multilib unzip \</span><br><span class="language-bash">    device-tree-compiler ncurses-dev \</span><br><span class="language-bash">    time \</span><br><span class="language-bash">    openssh-server net-tools</span><br><span class="hljs-comment"># 替换 openssh-server 配置，使其支持root登录</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> sed -i <span class="hljs-string">'/.*PermitRootLogin*/c\PermitRootLogin yes'</span> /etc/ssh/sshd_config</span><br><br><span class="hljs-comment"># 使用创建好的用户</span><br><span class="hljs-keyword">USER</span> u<br><br><span class="hljs-comment"># 工作目录使用 /home/u</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /home/u</span><br><br></code></pre></td></tr></tbody></table></figure>
 
 <h2 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h2><p><code>sudo docker build -t test .</code></p>
 <ul>
@@ -399,7 +400,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年9月28日</div>
+          <div>2022年9月29日</div>
         </div>
       
       

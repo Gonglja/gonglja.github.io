@@ -113,7 +113,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -327,7 +327,7 @@
 
 <p>源码会下载到/usr/src下，且不会解压，可以拷贝至用户目录，再解压。</p>
 <p>拷贝到自定义目录</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo cp /usr/src/linux-source-5.13.0 /path/to/anywhere<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 接着修改文件权限为当前用户权限</span><br>sudo chown 当前用户组:当前用户 文件（夹）<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 此时就可以直接解压了，不需要root权限</span><br><span class="hljs-meta">#</span><span class="bash"> 如因权限问题解压错误，一定要确保当前文件夹权限为当前用户，否则就得需要root权限解压</span><br>tar -jxvf linux-source-5.13.0.tar.bz2<br><br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo cp /usr/src/linux-source-5.13.0 /path/to/anywhere<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">接着修改文件权限为当前用户权限</span><br>sudo chown 当前用户组:当前用户 文件（夹）<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">此时就可以直接解压了，不需要root权限</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">如因权限问题解压错误，一定要确保当前文件夹权限为当前用户，否则就得需要root权限解压</span><br>tar -jxvf linux-source-5.13.0.tar.bz2<br><br></code></pre></td></tr></tbody></table></figure>
 
 
 
@@ -358,7 +358,7 @@
 <p>下面的那个也要删除。</p>
 <p>错误<code>BTF: .tmp_vmlinux.btf: pahole (pahole) is not available</code></p>
 <p>安装dwarves <code>sudo apt install dwarves</code></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 先安装模块</span><br>sudo make modules_install <br><span class="hljs-meta">#</span><span class="bash"> 在安装内核</span><br>sudo make install <br><span class="hljs-meta">#</span><span class="bash"> 更新grub</span><br>sudo update-grub2<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">先安装模块</span><br>sudo make modules_install <br><span class="hljs-meta prompt_"># </span><span class="language-bash">在安装内核</span><br>sudo make install <br><span class="hljs-meta prompt_"># </span><span class="language-bash">更新grub</span><br>sudo update-grub2<br></code></pre></td></tr></tbody></table></figure>
 
 
 

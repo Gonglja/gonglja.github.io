@@ -113,7 +113,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -345,7 +345,7 @@
 <h3 id="添加相关模块"><a href="#添加相关模块" class="headerlink" title="添加相关模块"></a>添加相关模块</h3><figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo vi <span class="hljs-regexp">/etc/m</span>kinitcpio.conf<br>MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)<br><span class="hljs-comment"># :wq 保存退出 </span><br></code></pre></td></tr></tbody></table></figure>
 
 <p>然后执行</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo mkinitcpio -p linux<br><span class="hljs-meta">#</span><span class="bash">如果报错，重新安装一下linux，先运行下面的，在运行这一句</span><br>sudo pacman -S linux<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo mkinitcpio -p linux<br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果报错，重新安装一下linux，先运行下面的，在运行这一句</span><br>sudo pacman -S linux<br></code></pre></td></tr></tbody></table></figure>
 
 <h2 id="启动vmtoolsd-service"><a href="#启动vmtoolsd-service" class="headerlink" title="启动vmtoolsd.service"></a>启动<code>vmtoolsd.service</code></h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl start vmtoolsd.service<br>sudo systemctl enable vmtoolsd.service<br></code></pre></td></tr></tbody></table></figure>
 
