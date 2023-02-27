@@ -19,8 +19,8 @@
     <meta name="description" content="Linux0.11环境搭建与阅读背景更好的学习 linux 内核思想，做一个有想法的人。 环境搭建在 windows 下使用虚拟机 vmware ，虚拟机使用 ubuntu 22.04 LTS，模拟器使用 qemu 。 搭建虚拟机vmware过程省略，具体的可查看 archlinux的搭建 搭建ubuntu中qemu 由于使用命令 sudo apt install qemu 安装版本过旧并可能存在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux0.11环境搭建与阅读">
-<meta property="og:url" content="http://gonglja.github.io/posts/ca3a0e2a/index.html">
-<meta property="og:site_name" content="Sky Road">
+<meta property="og:url" content="https://www.glj0.top/posts/ca3a0e2a/index.html">
+<meta property="og:site_name" content="glj的个人笔记">
 <meta property="og:description" content="Linux0.11环境搭建与阅读背景更好的学习 linux 内核思想，做一个有想法的人。 环境搭建在 windows 下使用虚拟机 vmware ，虚拟机使用 ubuntu 22.04 LTS，模拟器使用 qemu 。 搭建虚拟机vmware过程省略，具体的可查看 archlinux的搭建 搭建ubuntu中qemu 由于使用命令 sudo apt install qemu 安装版本过旧并可能存在">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Gonglja/imgur/img/202205110934467.png">
@@ -65,7 +65,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>linux0.11环境搭建与阅读 - Sky Road</title>
+  <title>linux0.11环境搭建与阅读 - glj的个人笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -103,7 +103,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"gonglja.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"ba9ad47a532e073820aabc9b0ffb6c5b","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.glj0.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":"ba9ad47a532e073820aabc9b0ffb6c5b","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -113,34 +113,6 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
-
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?ba9ad47a532e073820aabc9b0ffb6c5b";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 
   
@@ -159,7 +131,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Sky Road</strong>
+      <strong>glj的个人笔记</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -355,7 +327,7 @@
                 
                 <h1 id="Linux0-11环境搭建与阅读"><a href="#Linux0-11环境搭建与阅读" class="headerlink" title="Linux0.11环境搭建与阅读"></a>Linux0.11环境搭建与阅读</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>更好的学习 linux 内核思想，做一个有想法的人。</p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>在 windows 下使用虚拟机 vmware ，虚拟机使用 ubuntu 22.04 LTS，模拟器使用 qemu 。</p>
-<p>搭建虚拟机vmware过程省略，具体的可查看 <a href="https://gonglja.github.io/posts/d78cdbc6/">archlinux的搭建</a></p>
+<p>搭建虚拟机vmware过程省略，具体的可查看 <a target="_blank" rel="noopener" href="https://gonglja.github.io/posts/d78cdbc6/">archlinux的搭建</a></p>
 <h3 id="搭建ubuntu中qemu"><a href="#搭建ubuntu中qemu" class="headerlink" title="搭建ubuntu中qemu"></a>搭建ubuntu中qemu</h3><blockquote>
 <p>由于使用命令 sudo apt install qemu 安装版本过旧并可能存在问题，所以本文使用编译方式安装。</p>
 </blockquote>
@@ -1110,7 +1082,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>linux0.11环境搭建与阅读</div>
-      <div>http://gonglja.github.io/posts/ca3a0e2a/</div>
+      <div>https://www.glj0.top/posts/ca3a0e2a/</div>
     </div>
     <div class="license-meta">
       
@@ -1181,30 +1153,6 @@
             </div>
 
             
-  <article id="comments" lazyload>
-    
-  <div id="gitalk-container"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#gitalk-container', function() {
-      Fluid.utils.createCssLink('/css/gitalk.css')
-      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
-        var options = Object.assign(
-          {"clientID":"cf6d7d2674b768ef1bf7","clientSecret":"a8254412e77947a4ff26d08ce7af7b5853efbb44","repo":"gonglja.github.io","owner":"Gonglja","admin":"Gonglja","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
-          {
-            id: '50cde5ac6c5b7e8e9e23f6576ae0cb23'
-          }
-        )
-        var gitalk = new Gitalk(options);
-        gitalk.render('gitalk-container');
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
           </article>
         </div>
       </div>
@@ -1317,30 +1265,34 @@
     </div>
   
   
-    <div class="statistics">
   
-  
-
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鲁ICP备2023000037号-1
+    </a>
+  </span>
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
-        <span id="busuanzi_value_site_pv"></span>
-         次
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37142802000829"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>鲁公网安备 37142802000829号</span>
+        </a>
       </span>
-    
-    
-      <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
-        <span id="busuanzi_value_site_uv"></span>
-         人
-      </span>
-    
     
   
 </div>
 
-  
   
   
 </div>

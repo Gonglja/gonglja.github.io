@@ -19,8 +19,8 @@
     <meta name="description" content="原英文 https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;grub&#x2F;manual&#x2F;multiboot&#x2F;multiboot.html   原文地址 blog.csdn.net  [TOC] Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。  概览 术语 规范 示例 历史 调用 mbchk：如何使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Multiboot规范">
-<meta property="og:url" content="http://gonglja.github.io/posts/4e0f05fa/index.html">
-<meta property="og:site_name" content="Sky Road">
+<meta property="og:url" content="https://www.glj0.top/posts/4e0f05fa/index.html">
+<meta property="og:site_name" content="glj的个人笔记">
 <meta property="og:description" content="原英文 https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;grub&#x2F;manual&#x2F;multiboot&#x2F;multiboot.html   原文地址 blog.csdn.net  [TOC] Multiboot 规范Multiboot 规范本文定义了 Multiboot 规范——提议中的引导过程标准。本文是此规范的 0.6.96 版。  概览 术语 规范 示例 历史 调用 mbchk：如何使">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-01T14:13:25.000Z">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Multiboot规范 - Sky Road</title>
+  <title>Multiboot规范 - glj的个人笔记</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -71,7 +71,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"gonglja.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"ba9ad47a532e073820aabc9b0ffb6c5b","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.glj0.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":"ba9ad47a532e073820aabc9b0ffb6c5b","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -81,34 +81,6 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
-
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?ba9ad47a532e073820aabc9b0ffb6c5b";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-      }
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 
   
@@ -127,7 +99,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Sky Road</strong>
+      <strong>glj的个人笔记</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -804,7 +776,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Multiboot规范</div>
-      <div>http://gonglja.github.io/posts/4e0f05fa/</div>
+      <div>https://www.glj0.top/posts/4e0f05fa/</div>
     </div>
     <div class="license-meta">
       
@@ -875,30 +847,6 @@
             </div>
 
             
-  <article id="comments" lazyload>
-    
-  <div id="gitalk-container"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#gitalk-container', function() {
-      Fluid.utils.createCssLink('/css/gitalk.css')
-      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
-        var options = Object.assign(
-          {"clientID":"cf6d7d2674b768ef1bf7","clientSecret":"a8254412e77947a4ff26d08ce7af7b5853efbb44","repo":"gonglja.github.io","owner":"Gonglja","admin":"Gonglja","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
-          {
-            id: '3d570192fda22a9f6257492a718e9417'
-          }
-        )
-        var gitalk = new Gitalk(options);
-        gitalk.render('gitalk-container');
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-  </article>
-
-
           </article>
         </div>
       </div>
@@ -1011,30 +959,34 @@
     </div>
   
   
-    <div class="statistics">
   
-  
-
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鲁ICP备2023000037号-1
+    </a>
+  </span>
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
-        <span id="busuanzi_value_site_pv"></span>
-         次
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37142802000829"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>鲁公网安备 37142802000829号</span>
+        </a>
       </span>
-    
-    
-      <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
-        <span id="busuanzi_value_site_uv"></span>
-         人
-      </span>
-    
     
   
 </div>
 
-  
   
   
 </div>
